@@ -45,5 +45,13 @@ class CategoriasTableSeeder extends Seeder
             'updated_at' => Date('Y-m-d'),
         ]);
 
+        Categoria::insert([
+            'nombre' => 'Ofertas',
+            'slug' => 'ofertas',
+            'descripcion' => 'Artículos en oferta.',
+            'created_at' => Date('Y-m-d'),
+            'updated_at' => Date('Y-m-d'),
+        ]);
+
     }
 }

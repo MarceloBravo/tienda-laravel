@@ -16,6 +16,7 @@ class AddFieldToProductos extends Migration
         Schema::table('productos', function (Blueprint $table) {
             $table->bigInteger('marca_id')->unsigned();
             $table->foreign('marca_id')->references('id')->on('marcas');
+            $table->boolean('oferta')->default(false);
         });
     }
 
