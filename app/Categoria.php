@@ -16,6 +16,6 @@ class Categoria extends Model
     ];
 
     public function productos(){
-        $this->hasMany('App\Producto');
+        return $this->hasMany('App\Producto');
     }
 }

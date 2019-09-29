@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Producto;
 
-class ProductosController extends Controller
+class CarritoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        
+        return view("pages.carrito");
     }
 
     /**
@@ -44,9 +44,11 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $producto = Producto::where('slug','=',$slug)->first();
+
+        return view("pages.carrito", compact('producto'));
     }
 
     /**

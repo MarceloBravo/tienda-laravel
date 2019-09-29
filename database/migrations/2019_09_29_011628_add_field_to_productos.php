@@ -17,6 +17,7 @@ class AddFieldToProductos extends Migration
             $table->bigInteger('marca_id')->unsigned();
             $table->foreign('marca_id')->references('id')->on('marcas');
             $table->boolean('oferta')->default(false);
+            $table->decimal('precio_anterior',12,2)->unsigned();
         });
     }
 

@@ -22,7 +22,6 @@ class CreateProductos extends Migration
             $table->text('descripcion');
             $table->string('resumen',300);
             $table->decimal('precio',12,2);
-            $table->string('imagen',255);
             $table->boolean('visible');
             $table->string('color', 20);            
             $table->boolean('nuevo');

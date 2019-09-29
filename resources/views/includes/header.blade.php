@@ -40,7 +40,7 @@
                                 <option value="1">Categoría 01</option>
                                 <option value="1">Categoría 02</option>
                             </select>
-                            <input class="input" placeholder="Search here">
+                            <input class="input" placeholder="Buscar aquí">
                             <button class="search-btn">Buscar</button>
                         </form>
                     </div>

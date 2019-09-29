@@ -17,6 +17,6 @@ class Rol extends Model
 
     //Relación uno a muchos
     public function usuarios(){
-        $this->hasMany('App\User');
+        return $this->hasMany('App\User');
     }
 }

@@ -12,17 +12,23 @@ class Producto extends Model
     protected $table = 'productos';
     //
     protected $fillable = [
-        'categoria_id', 'nombre', 'slug', 'descripcion', 'resumen',  'precio', 'imagen', 'visible'
+        'categoria_id', 'nombre', 'slug', 'descripcion', 'resumen',  'precio', 'visible'
     ];
 
     //Relacion muchos a uno
-    public function categorias(){
-        $this->belongsTo('App\Categoria');
+    public function categoria(){
+        return $this->belongsTo('App\Categoria');
     }
 
     //Relación muchos a muchos con una tabla pivote intermedia
     public function orden(){
-        $this->belongsToMany('App\Orden')->using('App\OrdenItem')->withPivot(['created_at','updated_at']);
+        return $this->belongsToMany('App\Orden')->using('App\OrdenItem')->withPivot(['created_at','updated_at']);
+    }
+
+    //Relación uno a muchos
+    public function imagenes()
+    {
+        return $this->hasMany('App\ImagenesProducto');
     }
 
 }

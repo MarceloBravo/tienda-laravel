@@ -41,11 +41,11 @@ class User extends Authenticatable
 
     //Relación uno a muchos
     public function ordenes(){
-        $this->hasMany('App\Orden');
+        return $this->hasMany('App\Orden');
     }
 
     //Relación muchos a uno (relación de uno a muchos de inverso a roles)
     public function rol(){
-        $this->belongsTo('App\Rol');
+       return $this->belongsTo('App\Rol');
     }
 }
