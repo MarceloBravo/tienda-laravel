@@ -14,8 +14,8 @@ class CategoriasTableSeeder extends Seeder
     {
         //
         Categoria::insert([
-            'nombre' => 'Computación',
-            'slug' => 'computacion',
+            'nombre' => 'Laptops',
+            'slug' => 'laptops',
             'descripcion' => 'Artículos de computación',
             'created_at' => Date('Y-m-d'),
             'updated_at' => Date('Y-m-d'),
@@ -28,5 +28,22 @@ class CategoriasTableSeeder extends Seeder
             'created_at' => Date('Y-m-d'),
             'updated_at' => Date('Y-m-d'),
         ]);
+
+        Categoria::insert([
+            'nombre' => 'Camaras',
+            'slug' => 'video',
+            'descripcion' => 'Artículos de video y fotografía',            
+            'created_at' => Date('Y-m-d'),
+            'updated_at' => Date('Y-m-d'),
+        ]);
+
+        Categoria::insert([
+            'nombre' => 'Accesorios',
+            'slug' => 'accesorios',
+            'descripcion' => 'audífonos, cargadores, cables usb, pendrives, etc.',            
+            'created_at' => Date('Y-m-d'),
+            'updated_at' => Date('Y-m-d'),
+        ]);
+
     }
 }
