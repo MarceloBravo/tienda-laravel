@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFieldToProductos extends Migration
+class CreateMarcas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddFieldToProductos extends Migration
      */
     public function up()
     {
-        Schema::table('productos', function (Blueprint $table) {
-            $table->string('marca', 50);
+        Schema::create('marcas', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre', 50)->unique();            
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -25,8 +28,6 @@ class AddFieldToProductos extends Migration
      */
     public function down()
     {
-        Schema::table('productos', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('marcas');
     }
 }

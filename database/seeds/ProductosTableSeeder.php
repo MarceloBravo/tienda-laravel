@@ -23,7 +23,8 @@ class ProductosTableSeeder extends Seeder
             'imagen' => '',
             'visible' => true,
             'color' => 'Negro',
-            'marca' => 'ASUS',
+            'marca_id' => 1,
+            'nuevo' => true,
             'created_at' => Date('Y-m-d'),
             'updated_at' => Date('Y-m-d')
         ]);
@@ -38,7 +39,8 @@ class ProductosTableSeeder extends Seeder
             'imagen' => '',
             'visible' => true,
             'color' => 'Gris',
-            'marca' => 'LENOVO',
+            'marca_id' => 2,
+            'nuevo' => true,
             'created_at' => Date('Y-m-d'),
             'updated_at' => Date('Y-m-d')
         ]);
@@ -53,7 +55,8 @@ class ProductosTableSeeder extends Seeder
             'imagen' => '',
             'visible' => true,
             'color' => 'Negro',
-            'marca' => 'Samsung',
+            'marca_id' => 4,
+            'nuevo' => true,
             'created_at' => Date('Y-m-d'),
             'updated_at' => Date('Y-m-d')
         ]);
