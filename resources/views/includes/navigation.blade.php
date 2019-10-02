@@ -5,7 +5,7 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/">Home</a></li>
                 <li><a href="#">Ofertas</a></li>
                 <li><a href="#">Categorías</a></li>
                 <li><a href="#">Laptops</a></li>

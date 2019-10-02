@@ -114,7 +114,7 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Agregar al carro</button>
+												<a class="add-to-cart-btn" href="/carrito/agregar/{{ $producto->slug }}"><i class="fa fa-shopping-cart"></i> Agregar al carro</a>
 											</div>
 										</div>
 										@endforeach

@@ -1,0 +1,8 @@
+.col-imagen{
+    width: 100px;
+    padding: 0px;
+}
+
+.col-imagen > img{
+    width: 60px;
+}

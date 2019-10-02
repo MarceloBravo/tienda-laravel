@@ -4,84 +4,65 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Producto;
+use Redirect;
 
 class CarritoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        return view("pages.carrito");
+        if(!\Session::has('carrito')){
+            \Session::put('carrito', array());
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    //Mostrar carrito
+    public function show()
+    {
+        $carrito = \Session::get('carrito');
+    
+        return view('pages.carrito', compact('carrito'));
+    }
+
+    //Agregar Item
+    public function agregar(Producto $producto) //Ver la inyección de dependencia en routes/web.php 
+    {
+        $carrito = \Session::get('carrito');
+        $producto->cantidad = 1;
+        $carrito[$producto->slug] = $producto;
+        \Session::put('carrito', $carrito);
+        
+        return Redirect::to('/carrito');
+    }
+
+    //Grabar transacción
+    public function grabar()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    //Vaciar carrito
+    public function vaciar()
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($slug)
-    {
-        $producto = Producto::where('slug','=',$slug)->first();
-
-        return view("pages.carrito", compact('producto'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    //Actualizar Item
+    public function actualizar($slug)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    //Eliminar item
+    public function eliminar($slug)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    //Total
+    public function total()
     {
-        //
+
     }
 }

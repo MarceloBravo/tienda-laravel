@@ -75,7 +75,7 @@
 										<span class="qty-down">-</span>
 									</div>
 								</div>
-								<a href="/carrito/{{ $producto->slug }}" class="add-to-cart-btn btnAgregarCarrito"><i class="fa fa-shopping-cart"></i>Agregar al carro</a>
+								<a href="/carrito/agregar/{{ $producto->slug }}" class="add-to-cart-btn btnAgregarCarrito"><i class="fa fa-shopping-cart"></i>Agregar al carro</a>
 							</div>
 
 							<ul class="product-btns">
