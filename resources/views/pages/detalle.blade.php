@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('header')
+	@include('includes.header-bar')
+@endsection
+
 @section('Content')
 		<!-- SECTION -->
 		<div class="section">

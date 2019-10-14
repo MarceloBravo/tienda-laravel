@@ -6,31 +6,35 @@ use Illuminate\Http\Request;
 use App\Producto;
 use Redirect;
 
+
 class CarritoController extends Controller
 {
+    use \App\Http\traits\CarritoTrait;
+
     public function __construct()
     {
-        if(!\Session::has('carrito')){
+        if(!\Session::has('carrito'))
             \Session::put('carrito', array());
-        }
+        
+
+        if(!\Session::has('subTotal'))
+            \Session::put('subTotal', 0);
     }
 
     //Mostrar carrito
     public function show()
     {
         $carrito = \Session::get('carrito');
-    
-        return view('pages.carrito', compact('carrito'));
+        $total = $this->total();
+        \Session::put('subTotal', $total);
+        return view('pages.carrito', compact('carrito','total'));
     }
 
     //Agregar Item
     public function agregar(Producto $producto) //Ver la inyección de dependencia en routes/web.php 
     {
-        $carrito = \Session::get('carrito');
-        $producto->cantidad = 1;
-        $carrito[$producto->slug] = $producto;
-        \Session::put('carrito', $carrito);
-        
+        $this->agregarProducto(); //Trait
+
         return Redirect::to('/carrito');
     }
 
@@ -44,7 +48,17 @@ class CarritoController extends Controller
     //Vaciar carrito
     public function vaciar()
     {
-        //
+        \Session::forget('carrito');
+
+        return Redirect::to('carrito');
+        /*
+        $carrito = \Session::get('carrito');
+        unset($carrito);
+        $carrito = array();
+        \Session::put('carrito', $carrito);
+
+        return Redirect::to('/carrito');
+        */
     }
 
     //Actualizar Item
@@ -53,16 +67,26 @@ class CarritoController extends Controller
         //
     }
 
+    //Modificar Cantidad del producto
+    public function cantidad(Producto $producto, $cantidad)
+    {
+        $carrito = \Session::get('carrito');
+        $carrito[$producto->slug]->cantidad = $cantidad;
+        \Session::put('carrito', $carrito);
+
+        return Redirect::to('/carrito');
+    }
+
     //Eliminar item
-    public function eliminar($slug)
+    public function eliminar(Producto $producto)
     {
-        //
+        $carrito = \Session::get('carrito');
+        unset($carrito[$producto->slug]);
+        \Session::put('carrito',$carrito);
+
+        return Redirect::to('/carrito');
     }
 
 
-    //Total
-    public function total()
-    {
-
-    }
+    
 }

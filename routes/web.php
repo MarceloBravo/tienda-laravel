@@ -24,6 +24,8 @@ Route::bind('producto', function($slug){
 
 //Definiendo rutas
 Route::get('/','ShoppingController@Home');
+Route::get('/agregar/{producto}','ShoppingController@agregarAlCarrito');
+Route::get('/vaciarCarrito','ShoppingController@vaciar');
 Route::get('detalle/{id}','ShoppingController@detalle');
 
 Route::get('carrito','CarritoController@show');
@@ -33,4 +35,5 @@ Route::get('carrito/vaciar','CarritoController@vaciar');
 Route::get('carrito/actualizar/{producto}','CarritoController@actualizar');
 Route::get('carrito/eliminar/{producto}','CarritoController@eliminar');
 Route::get('carrito/total','CarritoController@total');
+Route::get('carrito/{producto}/{cantidad}','CarritoController@cantidad');
 

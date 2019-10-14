@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('header')
+	@include('includes.header-bar')
+@endsection
+
 @section('Content')
     
 		<!-- SECTION -->
@@ -108,13 +112,15 @@
 													<i class="fa fa-star"></i>
 												</div>
 												<div class="product-btns">
+													<!--
 													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Agregar a mi lista de deseos</span></button>
 													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Comparar</span></button>
-													<button onclick="window.location = '/detalle/{{ $producto->id }}'" class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Detalle</span></button>
+													-->
+													Ver detalle<button onclick="window.location = '/detalle/{{ $producto->id }}'" class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Ver detalle</span></button>
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<a class="add-to-cart-btn" href="/carrito/agregar/{{ $producto->slug }}"><i class="fa fa-shopping-cart"></i> Agregar al carro</a>
+												<a class="add-to-cart-btn" href="/agregar/{{ $producto->slug }}">lo quiero</a>
 											</div>
 										</div>
 										@endforeach

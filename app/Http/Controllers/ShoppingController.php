@@ -4,9 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Producto;
+use Redirect;
 
 class ShoppingController extends Controller
 {
+    use \App\Http\traits\CarritoTrait;
+
+    public function __construct(){
+
+        if(!\Session::has('carrito'))
+            \Session::put('carrito', array());
+
+        if(!\Session::has('subTotal'));
+            \Session::put('subTotal', 0);
+    }
+
     public function Home()
     {
         $destacados = Producto::where('visible','=',true)
@@ -28,4 +40,23 @@ class ShoppingController extends Controller
         
         return view('pages.detalle', compact('producto','relacionados'));
     }
+
+    public function agregarAlCarrito(Producto $producto)
+    {
+        $this->agregarProducto($producto);
+        \Session::put('subTotal', $this->total());
+
+        return Redirect::to('/');
+    }
+
+    //Vaciar carrito
+    public function vaciar()
+    {
+        \Session::forget('carrito');
+
+        return Redirect::to('/');
+    }
+
+
+
 }

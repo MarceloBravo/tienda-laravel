@@ -6,3 +6,34 @@
 .col-imagen > img{
     width: 60px;
 }
+
+.table > tbody > tr > td{
+    vertical-align: middle;
+}
+
+td{
+    text-align: right;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.col-eliminar{
+    width: 50px;
+}
+
+.msg-empty-cart{
+    text-align: center;
+}
+
+.col-cantidad{
+    width: 90px;
+}
+
+.col-nombre{
+    text-align: left;
+}
+
+.div-total{
+    float: right;
+    padding-right: 15px;
+}

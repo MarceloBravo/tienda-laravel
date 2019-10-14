@@ -15,9 +15,13 @@
 
     </head>
 	<body>
-		<!-- HEADER -->
-		@include('includes.header')
-		<!-- /HEADER -->
+		<header>
+			<!-- HEADER -->
+			@include('includes.header')
+
+			@yield('header')
+			<!-- /HEADER -->
+		</header>
 
 		<!-- NAVIGATION -->
 		@include('includes.navigation')
@@ -25,14 +29,14 @@
 
         @yield('Content')
 
+		<!-- NEWSLETTER -->
+		@include('includes.newsletter')
+		<!-- /NEWSLETTER -->
+
 		<!-- FOOTER -->
 		@include('includes.footer')
 		<!-- /FOOTER -->
 
-        <!-- NEWSLETTER -->
-		@include('includes.newsletter')
-		<!-- /NEWSLETTER -->
-        
 		@yield('script')
 
 	</body>
