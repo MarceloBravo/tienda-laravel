@@ -1,0 +1,14 @@
+.card{
+    padding: 25px 0px;
+}
+
+.card-header{
+    font-size: large;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+.div-btn-login{
+    float: right;
+}

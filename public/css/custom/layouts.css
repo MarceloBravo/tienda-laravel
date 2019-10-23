@@ -1,0 +1,12 @@
+.pull-right>.dropdown-menu {
+    right: inherit !important;
+    left: auto;
+}
+
+.pull-right > .dropdown-menu{
+    top: inherit !important;
+}
+
+.pull-right > .dropdown-menu:active{
+    display: block;
+}

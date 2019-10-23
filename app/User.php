@@ -48,4 +48,9 @@ class User extends Authenticatable
     public function rol(){
        return $this->belongsTo('App\Rol');
     }
+
+    public function ciudad()
+    {
+        return $this->hasOne('App\Ciudad','id','id_ciudad');
+    }
 }

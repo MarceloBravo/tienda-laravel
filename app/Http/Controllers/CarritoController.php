@@ -86,7 +86,5 @@ class CarritoController extends Controller
 
         return Redirect::to('/carrito');
     }
-
-
     
 }

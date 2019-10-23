@@ -37,3 +37,14 @@ Route::get('carrito/eliminar/{producto}','CarritoController@eliminar');
 Route::get('carrito/total','CarritoController@total');
 Route::get('carrito/{producto}/{cantidad}','CarritoController@cantidad');
 
+Route::get('detalle-compra','DetalleCompraController@index')->middleware('auth');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('payment','PaypalController@postPayment');
+Route::get('payment/status','PaypalController@getPaymentStatus')->name('payment.status');
+
+Route::get('usd', 'PaypalController@getUSD');

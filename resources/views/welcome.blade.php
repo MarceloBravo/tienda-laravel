@@ -672,34 +672,3 @@
 		
 
 @endsection
-
-
-@section('style')
-<!-- Bootstrap -->
-<link type="text/css" rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
-<!-- Slick -->
-<link type="text/css" rel="stylesheet" href="{{ asset('css/slick.css') }}"/>
-<link type="text/css" rel="stylesheet" href="{{ asset('css/slick-theme.css') }}"/>
-<!-- nouislider -->
-<link type="text/css" rel="stylesheet" href="{{ asset('css/nouislider.min.css') }}"/>
-<!-- Font Awesome Icon -->
-<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-<!-- Custom stlylesheet -->
-<link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}"/>
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-@endsection
-
-@section('script')
-<!-- jQuery Plugins -->
-<script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/slick.min.js') }}"></script>
-<script src="{{ asset('js/nouislider.min.js') }}"></script>
-<script src="{{ asset('js/jquery.zoom.min.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
-@endsection

@@ -16,6 +16,10 @@ class DatabaseSeeder extends Seeder
         //$this->call(CategoriasTableSeeder::class);
         //$this->call(MarcasTableSeeder::class);
         //$this->call(ProductosTableSeeder::class);
-        $this->call(ImagenesProductosTableSeeder::class);
+        //$this->call(ImagenesProductosTableSeeder::class);
+        $this->call(PaisesSeeder::class);
+        $this->call(RegionesSeeder::class);
+        $this->call(ComunasSeeder::class);
+        $this->call(CiudadesSeeder::class);
     }
 }
