@@ -33,7 +33,7 @@ class CarritoController extends Controller
     //Agregar Item
     public function agregar(Producto $producto) //Ver la inyección de dependencia en routes/web.php 
     {
-        $this->agregarProducto(); //Trait
+        $this->agregarProducto($producto); //Trait
 
         return Redirect::to('/carrito');
     }
@@ -51,14 +51,7 @@ class CarritoController extends Controller
         \Session::forget('carrito');
 
         return Redirect::to('carrito');
-        /*
-        $carrito = \Session::get('carrito');
-        unset($carrito);
-        $carrito = array();
-        \Session::put('carrito', $carrito);
 
-        return Redirect::to('/carrito');
-        */
     }
 
     //Actualizar Item

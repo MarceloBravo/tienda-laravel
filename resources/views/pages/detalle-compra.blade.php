@@ -120,50 +120,11 @@
                                 @endif
                             </div>
 
-                            <div class="payment-method">
-                                <div class="input-radio">
-                                    <input type="radio" name="payment" id="payment-1">
-                                    <label for="payment-1">
-                                        <span></span>
-                                        Transferencia bancaria
-                                    </label>
-                                    <div class="caption">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    </div>
+                            <div class="row col-md-offset-2">
+                                <div class="col-md-4">
+                                    <a href="/carrito" class="primary-btn order-submit"><i class="fa fa-chevron-circle-left"></i> Volver al carrito</a>
                                 </div>
-                                <div class="input-radio">
-                                    <input type="radio" name="payment" id="payment-2">
-                                    <label for="payment-2">
-                                        <span></span>
-                                        Cheque
-                                    </label>
-                                    <div class="caption">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    </div>
-                                </div>
-                                <div class="input-radio">
-                                    <input type="radio" name="payment" id="payment-3">
-                                    <label for="payment-3">
-                                        <span></span>
-                                        Paypal
-                                    </label>
-                                    <div class="caption">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="input-checkbox">
-                                <input type="checkbox" id="terms">
-                                <label for="terms">
-                                    <span></span>
-                                    He leído y acepto los <a href="#">términos y condiciones</a>
-                                </label>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a href="/carrito" class="primary-btn order-submit"><i class="fa fa-chevron-circle-left"></i>Volver al carrito</a>
-                                </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <a href="/payment" class="primary-btn order-submit">Pagar con Paypal <i class="fa fa-paypal"></i></a>
                                 </div>						
                             </div>

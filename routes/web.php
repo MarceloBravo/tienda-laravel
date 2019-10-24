@@ -46,7 +46,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('payment','PaypalController@postPayment');
 Route::get('payment/status','PaypalController@getPaymentStatus')->name('payment.status');
-Route::get('pago-ok', 'PaypalController@pagoOk');
+Route::get('fin-compra', 'PaypalController@endSale');
 Route::get('pago-error', 'PaypalController@pagoError');
 
 Route::get('usd', 'PaypalController@getUSD');

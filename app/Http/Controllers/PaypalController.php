@@ -24,6 +24,8 @@ use Redirect;
 
 class PaypalController extends Controller
 {
+    use \App\Http\traits\CarritoTrait;
+
     private $_api_context;
     
     public function __construct()
@@ -35,13 +37,8 @@ class PaypalController extends Controller
 
     public function postPayment()
     {
-        try
-        {
-            $dolar = $this->getUSD();
-        }catch(Exception $ex){
-            return Redirect::to('/')->with('error','No se pudo obtener el valor del dolar.');       
-        }
-        $gastosDeEnvio = 100/$dolar;
+        $dolar = $this->consultarDolar();
+        $gastosDeEnvio = $this->gastosDeEnvio($dolar);
 
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
@@ -139,7 +136,7 @@ class PaypalController extends Controller
 
         if(empty($payerId) || empty($token))
         {
-            return Redirect::to('/')->with('message', 'Ocurrió un problema al intentar pagar con Paypal.');
+            return Redirect::to('/pago-error')->with('message', 'Ocurrió un problema al intentar pagar con Paypal.');
         }
 
         $payment = Payment::get($paymentId, $this->_api_context);
@@ -150,21 +147,46 @@ class PaypalController extends Controller
         try{
             $result = $payment->execute($execution, $this->_api_context);
         } catch (\PayPal\Exception\PayPalConnectionException $ex) {
-            dd($ex->getCode(), $ex->getData(), $ex);
+            return Redirect::to('/pago-error')->with('message', 'Ocurrió un problema al intentar finalizar la transacción.<br/>Código del error: '.$ex->getCode());
+            //dd($ex->getCode(), $ex->getData(), $ex);
         }catch(PayPalConnectionException $e){
-            dd($ex->getCode(), $ex->getData(), $ex);
+            return Redirect::to('/pago-error')->with('message', 'Ocurrió un problema al intentar finalizar la transacción.<br/>Código del error: '.$ex->getCode());
+            //dd($ex->getCode(), $ex->getData(), $ex);
         } catch (\Exception $ex) {
-            dd($ex);
+            //dd($ex);
+            return Redirect::to('/pago-error')->with('message', 'Ocurrió un problema al intentar finalizar la transacción.<br/>Código del error: '.$ex->getCode());
         }
 
         if($result->getState() == 'approved')
         {
-            return Redirect::to('/pago-ok')->with('message','La compra fue realizada con exito.');
+            $carrito = \Session::get('carrito');
+            $dolar = $this->consultarDolar();
+            $total = $this->gastosDeEnvio($dolar) + $this->total();
+            return view('pages.pago-ok', compact('carrito','total') )->with('message','La compra fue realizada con exito.');
         }
 
-        return Redirect::to('/pago-error')->with('message','La compra fue cancelada.');
+        return view('pages.pago-error')->with('message','La compra fue cancelada.');
 
     }
+
+    
+    private function gastosDeEnvio($dolar)
+    {
+        return 100/$dolar;
+    }
+
+
+    private function consultarDolar()
+    {
+        try
+        {
+            return $this->getUSD();
+        }catch(Exception $ex){
+            return Redirect::to('/')->with('error','No se pudo obtener el valor del dolar.');       
+        }
+
+    }
+
 
     public function getUSD()
     {
@@ -188,12 +210,15 @@ class PaypalController extends Controller
         return json_decode($resp)->dolar->valor;
     }
 
-    public function pagoOk()
+    public function pagoError()
     {
-        return view('pages.pago-ok');
+        return view('pages.pago-error');
     }
 
-    public function pagoError(){
-        return  view('pages.pago-error');
+    public function endSale()
+    {
+        //Vacia el carrito y redirecciona al home
+        \Session::put('carrito', array());
+        return Redirect::to('/');
     }
 }

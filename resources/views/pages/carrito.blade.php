@@ -88,11 +88,11 @@
 							@endif
 						</div>
 						
-						<div class="row">
-							<div class="col-md-6">
+						<div class="row col-md-offset-2">
+							<div class="col-md-4">
 								<a href="/" class="primary-btn order-submit"><i class="fa fa-chevron-circle-left"></i> Seguir comprando</a>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<a href="/detalle-compra" class="primary-btn order-submit">Pagar <i class="fa fa-chevron-circle-right"></i></a>
 							</div>						
 						</div>

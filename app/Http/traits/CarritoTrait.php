@@ -11,12 +11,14 @@ trait CarritoTrait{
     //Total
     public function total()
     {
-        $carrito = \Session::get('carrito');
-        $total = 0;
-        foreach($carrito as $item){
-            $total += $item->precio * $item->cantidad;
+        $total = 0;   
+        if(\Session::has('carrito'))
+        {
+            $carrito = \Session::get('carrito');        
+            foreach($carrito as $item){
+                $total += $item->precio * $item->cantidad;
+            }
         }
-
         return $total;
     }
 
