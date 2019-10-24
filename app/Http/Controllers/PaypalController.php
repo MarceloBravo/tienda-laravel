@@ -134,7 +134,7 @@ class PaypalController extends Controller
         
         \Session::forget('paypal_payment_id');
 
-        $payerId = $request['paymentId'];
+        $payerId = $request['PayerID'];
         $token = $request['token'];
 
         if(empty($payerId) || empty($token))
@@ -145,22 +145,24 @@ class PaypalController extends Controller
         $payment = Payment::get($paymentId, $this->_api_context);
 
         $execution = new PaymentExecution();
-        $execution->setPayerId($request['paymentId']);
+        $execution->setPayerId($payerId);
 
         try{
             $result = $payment->execute($execution, $this->_api_context);
-        } catch (PayPal\Exception\PayPalConnectionException $ex) {
+        } catch (\PayPal\Exception\PayPalConnectionException $ex) {
             dd($ex->getCode(), $ex->getData(), $ex);
-        } catch (Exception $ex) {
+        }catch(PayPalConnectionException $e){
+            dd($ex->getCode(), $ex->getData(), $ex);
+        } catch (\Exception $ex) {
             dd($ex);
         }
 
         if($result->getState() == 'approved')
         {
-            return Redirect::to('/')->with('message','La compra fue realizada con exito.');
+            return Redirect::to('/pago-ok')->with('message','La compra fue realizada con exito.');
         }
 
-        return Redirect::to('/')->with('message','La compra fue cancelada.');
+        return Redirect::to('/pago-error')->with('message','La compra fue cancelada.');
 
     }
 
@@ -184,5 +186,14 @@ class PaypalController extends Controller
 
         //dd();
         return json_decode($resp)->dolar->valor;
+    }
+
+    public function pagoOk()
+    {
+        return view('pages.pago-ok');
+    }
+
+    public function pagoError(){
+        return  view('pages.pago-error');
     }
 }
