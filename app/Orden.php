@@ -17,7 +17,12 @@ class Orden extends Model
 
     //Relación muchos a uno (uno a muchos inverso a usuarios)
     public function usuarios(){
-        $this->belongsTo('App\User');
+        return $this->belongsTo('App\User');
+    }
+
+    public function itemsOrden()
+    {
+        return $this->belongsTo('App\Orden');
     }
 
 }

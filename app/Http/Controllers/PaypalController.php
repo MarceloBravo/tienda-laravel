@@ -22,11 +22,17 @@ use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
 use Redirect;
 
+use App\Orden;
+use App\OrdenItem;
+use App\Producto;
+use App\Mail;
+
 class PaypalController extends Controller
 {
     use \App\Http\traits\CarritoTrait;
 
     private $_api_context;
+    private $shipping = 100;
     
     public function __construct()
     {
@@ -162,6 +168,7 @@ class PaypalController extends Controller
             $carrito = \Session::get('carrito');
             $dolar = $this->consultarDolar();
             $total = $this->gastosDeEnvio($dolar) + $this->total();
+            $this->registrarOrden($carrito);
             return view('pages.pago-ok', compact('carrito','total') )->with('message','La compra fue realizada con exito.');
         }
 
@@ -172,7 +179,7 @@ class PaypalController extends Controller
     
     private function gastosDeEnvio($dolar)
     {
-        return 100/$dolar;
+        return $this->shipping / $dolar;
     }
 
 
@@ -218,7 +225,45 @@ class PaypalController extends Controller
     public function endSale()
     {
         //Vacia el carrito y redirecciona al home
+        Mail::to(\Session::user()->email)->send(new EmailFinVenta(\Session::get('carrito')));
         \Session::put('carrito', array());
         return Redirect::to('/');
+    }
+
+
+    private function registrarOrden($carrito)
+    {
+        $this->total();   
+        $this->shipping; 
+        
+        $orden = new Orden();        
+        $orden->user_id = \Session::user()->id;
+        $orden->shiping = $this->gastosDeEnvio();
+        $orden->subTotal = $this->total();
+        
+        try{
+            \DB::beginTransaction();            
+            if(!$orden->save())
+                throw new \ErrorException('Error al registrar la orden.');
+
+            foreach($carrito as $item)
+            {
+                $ordenItem = new OrdenItem();
+                $ordenItem->precio = $item->precio;
+                $ordenItem->cantidad = $item->cantidad;
+                $ordenItem->ordenId = $orden->id;
+                $ordenItem->productoId = $item->id;
+                if(!$ordenItem->save())
+                    throw new \ErrorException('Error al registrar el detalle de la venta.');
+            }
+            
+            \DB::commit();
+            return true;
+
+        }catch(Exception $ex){
+            \DB::rollback();
+        } 
+
+        return false;
     }
 }
