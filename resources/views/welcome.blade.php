@@ -60,7 +60,7 @@
 		</div>
 		<!-- /SECTION -->
 
-		<!-- SECTION -->
+		<!-- SECTION DESTACADOS -->
 		<div class="section">
 			<!-- container -->
 			<div class="container">
@@ -112,10 +112,6 @@
 													<i class="fa fa-star"></i>
 												</div>
 												<div class="product-btns">
-													<!--
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Agregar a mi lista de deseos</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Comparar</span></button>
-													-->
 													Ver detalle<button onclick="window.location = '/detalle/{{ $producto->id }}'" class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Ver detalle</span></button>
 												</div>
 											</div>
@@ -138,10 +134,11 @@
 			</div>
 			<!-- /container -->
 		</div>
-		<!-- /SECTION -->
+		<!-- /SECTION DESTACADOS -->
 
+		@foreach($ofertas as $oferta)
 		<!-- HOT DEAL SECTION -->
-		<div id="hot-deal" class="section">
+		<div id="hot-deal" class="section" style="background-image: url({{ asset($oferta->src_imagen) }} );">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
@@ -174,8 +171,8 @@
 									</div>
 								</li>
 							</ul>
-							<h2 class="text-uppercase">Oferta de la semana</h2>
-							<p>Nueva Colección con un 50% de descuento</p>
+							<h2 class="text-uppercase">{{ $oferta->texto1 }}</h2>
+							<p>{{ $oferta->texto2 }}</p>
 							<a class="primary-btn cta-btn" href="#">Ver las ofertas</a>
 						</div>
 					</div>
@@ -185,6 +182,7 @@
 			<!-- /container -->
 		</div>
 		<!-- /HOT DEAL SECTION -->
+		@endforeach
 
 		@if(count($masVendidos) > 0)
 		<!-- SECTION -->
@@ -220,7 +218,7 @@
 										<!-- product -->
 										@foreach($masVendidos as $item) 
 										<div class="product">
-											<div class="product-img">
+											<div class="product-img">												
 												<img src="{{ $item->imagenes()->where('default','=',true)->first()->url }}" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
@@ -239,13 +237,11 @@
 													<i class="fa fa-star"></i>
 												</div>
 												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+													Ver detalle<button onclick="window.location = '/detalle/{{ $item->id }}'" class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Ver detalle</span></button>
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Lo quiero</button>
+												<a class="add-to-cart-btn" href="/agregar/{{ $item->slug }}">lo quiero</a>												
 											</div>
 										</div>
 										@endforeach
@@ -265,7 +261,9 @@
 		</div>
 		<!-- /SECTION -->
 		@endif
-			
+		
+
+		@if(count($masVendidos2) > 0)
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->
@@ -282,23 +280,25 @@
 
 						
 						<div class="products-widget-slick" data-nav="#slick-nav-3">
-							
+						
 						@foreach($masVendidos2 as $item)
 							@if($item->fila == 1 || $item->fila == 4)
 							<div>
 							@endif
+							
 								<!-- product widget -->
 								<div class="product-widget">
 									<div class="product-img">
 										<img src="{{ $item->url }}" alt="">
 									</div>
 									<div class="product-body">
-										<p class="product-category">{{ $item->categoria }}</p>
+										<p class="product-category">{{ $item->id }} {{ $item->categoria }}</p>
 										<h3 class="product-name"><a href="#">{{ $item->nombre }}</a></h3>
 										<h4 class="product-price">$ {{ $item->precio }}<del class="product-old-price">$ {{ $item->precio_anterior }}</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
+							
 							@if($item->fila == 3 || $item->fila == 6)
 							</div>
 							@endif
@@ -312,7 +312,9 @@
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-		
+		@endif
+
+		@if(count($masVendidos3) > 0)
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->
@@ -359,7 +361,9 @@
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-		
+		@endif
+
+		@if(count($masVendidos4) > 0)
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->
@@ -406,6 +410,6 @@
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-		
+		@endif
 		
 @endsection

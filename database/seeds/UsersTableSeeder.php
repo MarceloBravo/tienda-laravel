@@ -22,6 +22,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123456'),
             'activo' => true,
             'direccion' => '12 Norte 16 Oriente #2288, Talca',
+            'id_ciudad' => 2,
+            'fono' => '974331085',
             'rol_id' => 1
         ]);
 
@@ -34,6 +36,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('654321'),
             'activo' => true,
             'direccion' => '2 Sur 16 Oriente #1234, Talca',
+            'id_ciudad' => 1,
+            'fono' => '0987654321',
             'rol_id' => 2
         ]);
 

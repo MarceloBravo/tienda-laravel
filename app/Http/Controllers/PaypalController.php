@@ -26,6 +26,7 @@ use App\Orden;
 use App\OrdenItem;
 use App\Producto;
 use App\Mail;
+use App\Mail\EmailFinVenta;
 
 class PaypalController extends Controller
 {
@@ -224,10 +225,9 @@ class PaypalController extends Controller
 
     public function endSale()
     {
-        //Vacia el carrito y redirecciona al home
-        Mail::to(\Session::user()->email)->send(new EmailFinVenta(\Session::get('carrito')));
-        \Session::put('carrito', array());
-        return Redirect::to('/');
+        \Mail::to(\Auth::user()->email)->send(new EmailFinVenta(\Session::get('carrito'), $this->total())); //Enviando el email de notificación de la compra
+        \Session::put('carrito', array());  //Vaciendo el carro de compras
+        return Redirect::to('/');   //Redireccionando a home
     }
 
 
@@ -237,8 +237,9 @@ class PaypalController extends Controller
         $this->shipping; 
         
         $orden = new Orden();        
-        $orden->user_id = \Session::user()->id;
-        $orden->shiping = $this->gastosDeEnvio();
+        $orden->user_id = \Auth::user()->id;
+        $dolar = $this->consultarDolar();
+        $orden->shiping = $this->gastosDeEnvio($dolar);
         $orden->subTotal = $this->total();
         
         try{
@@ -251,8 +252,8 @@ class PaypalController extends Controller
                 $ordenItem = new OrdenItem();
                 $ordenItem->precio = $item->precio;
                 $ordenItem->cantidad = $item->cantidad;
-                $ordenItem->ordenId = $orden->id;
-                $ordenItem->productoId = $item->id;
+                $ordenItem->orden_id = $orden->id;
+                $ordenItem->producto_id = $item->id;
                 if(!$ordenItem->save())
                     throw new \ErrorException('Error al registrar el detalle de la venta.');
             }

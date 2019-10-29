@@ -102,7 +102,7 @@ class ImagenesProductosTableSeeder extends Seeder
 
         ImagenesProducto::insert([
             'producto_id' => 8,
-            'url' => 'img/product08.png',
+            'url' => 'img/product09.png',
             'default' => true,
             'created_at' => Date('Y-m-d'),
             'updated_at' => Date('Y-m-d')
@@ -110,7 +110,7 @@ class ImagenesProductosTableSeeder extends Seeder
 
         ImagenesProducto::insert([
             'producto_id' => 8,
-            'url' => 'img/product09.png',
+            'url' => 'img/shop02.png',
             'default' => false,
             'created_at' => Date('Y-m-d'),
             'updated_at' => Date('Y-m-d')

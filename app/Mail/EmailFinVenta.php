@@ -12,15 +12,17 @@ class EmailFinVenta extends Mailable
     use Queueable, SerializesModels;
 
     public $carrito;
+    public $total;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($carrito)
+    public function __construct($carrito, $total)
     {
         $this->carrito = $carrito;
+        $this->total = $total;
     }
 
     /**
