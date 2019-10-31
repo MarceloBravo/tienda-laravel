@@ -262,7 +262,6 @@
 		<!-- /SECTION -->
 		@endif
 		
-
 		@if(count($masVendidos2) > 0)
 		<!-- SECTION -->
 		<div class="section">
@@ -292,7 +291,7 @@
 										<img src="{{ $item->url }}" alt="">
 									</div>
 									<div class="product-body">
-										<p class="product-category">{{ $item->id }} {{ $item->categoria }}</p>
+										<p class="product-category">{{ $item->cant }} x {{ $item->categoria }}</p>
 										<h3 class="product-name"><a href="#">{{ $item->nombre }}</a></h3>
 										<h4 class="product-price">$ {{ $item->precio }}<del class="product-old-price">$ {{ $item->precio_anterior }}</del></h4>
 									</div>

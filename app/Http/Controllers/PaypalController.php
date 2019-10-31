@@ -1,8 +1,8 @@
 <?php
+//VENTA CON PAYPAL
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequest;
@@ -26,7 +26,6 @@ use App\Orden;
 use App\OrdenItem;
 use App\Producto;
 use App\Mail;
-use App\Mail\EmailFinVenta;
 
 class PaypalController extends Controller
 {
@@ -222,14 +221,14 @@ class PaypalController extends Controller
     {
         return view('pages.pago-error');
     }
-
+    /*
     public function endSale()
     {
         \Mail::to(\Auth::user()->email)->send(new EmailFinVenta(\Session::get('carrito'), $this->total())); //Enviando el email de notificación de la compra
         \Session::put('carrito', array());  //Vaciendo el carro de compras
         return Redirect::to('/');   //Redireccionando a home
     }
-
+    */
 
     private function registrarOrden($carrito)
     {

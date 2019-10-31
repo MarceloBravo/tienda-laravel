@@ -88,14 +88,24 @@
 							@endif
 						</div>
 						
-						<div class="row col-md-offset-2">
-							<div class="col-md-4">
-								<a href="/" class="primary-btn order-submit"><i class="fa fa-chevron-circle-left"></i> Seguir comprando</a>
+						
+							@if(count($carrito) > 0)
+							<div class="row col-md-offset-2">
+								<div class="col-md-4">
+									<a href="/" class="primary-btn order-submit"><i class="fa fa-chevron-circle-left"></i> Seguir comprando</a>
+								</div>
+								<div class="col-md-4">
+									<a href="/detalle-compra" class="primary-btn order-submit">Pagar <i class="fa fa-chevron-circle-right"></i></a>
+								</div>
 							</div>
-							<div class="col-md-4">
-								<a href="/detalle-compra" class="primary-btn order-submit">Pagar <i class="fa fa-chevron-circle-right"></i></a>
-							</div>						
-						</div>
+							@else
+							<div class="row col-md-offset-4">
+								<div class="col-md-6">
+									<a href="/" class="primary-btn order-submit"><i class="fa fa-chevron-circle-left"></i> Volver a home</a>
+								</div>
+							</div>
+							@endif
+						
 						
 					</div>
 					<!-- /Order Details -->

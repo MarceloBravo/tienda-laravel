@@ -120,15 +120,22 @@
                                 @endif
                             </div>
 
-                            <div class="row col-md-offset-2">
-                                <div class="col-md-4">
+                            <div class="row">
+                                <div class="title-pay-buttons">
+                                    <b>Seleccione el medio de pago:</b>
+                                </div>                                
+                                <div class="row pay-buttons">
+                                    <a href="/checkout"><img class="btn-webpay" src="{{ asset('img/webpay/webpay.png') }}" /></a>
+                                    <a href="/payment"><img src="{{ asset('img/paypal/pp_cc_mark_74x46.jpg') }}" /></a>
+                                </div>
+                                
+                            </div>
+                            <div class="row col-md-offset-4">
+                                <div class="col-md-6">
                                     <a href="/carrito" class="primary-btn order-submit"><i class="fa fa-chevron-circle-left"></i> Volver al carrito</a>
                                 </div>
-                                <div class="col-md-4">
-                                    <a href="/payment" class="primary-btn order-submit">Pagar con Paypal <i class="fa fa-paypal"></i></a>
-                                </div>						
+                                						
                             </div>
-						
                     </div>
 					<!-- /Order Details -->
 				</div>
@@ -141,6 +148,7 @@
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/custom/carrito.css') }}">
+<link rel="stylesheet" href="{{ asset('css/custom/pago.css') }}">
 @endsection
 
 @section('script')

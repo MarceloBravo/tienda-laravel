@@ -19,6 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        '/checkout/webpay/response',  //Agregar esta línea. Cambiar a tu ruta
+        '/checkout/webpay/finish', //Agregar esta línea. Cambiar a tu ruta
     ];
 }

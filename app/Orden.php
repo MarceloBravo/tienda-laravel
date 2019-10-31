@@ -25,4 +25,9 @@ class Orden extends Model
         return $this->belongsTo('App\Orden');
     }
 
+    public function OrdenWebPay()
+    {
+        return $this->belongsTo('App\OrdenWebPay');
+    }
+
 }

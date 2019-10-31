@@ -1,0 +1,14 @@
+.title-pay-buttons{
+    padding-bottom: 15px;
+}
+
+.pay-buttons > a{
+    margin-right: 20px;
+}
+
+.btn-webpay{
+    height: 94px;
+    border: silver;
+    border-style: solid;
+    border-width: thin;
+}

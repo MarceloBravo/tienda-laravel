@@ -44,9 +44,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Rutas PayPal
 Route::get('payment','PaypalController@postPayment');
 Route::get('payment/status','PaypalController@getPaymentStatus')->name('payment.status');
-Route::get('fin-compra', 'PaypalController@endSale');
-Route::get('pago-error', 'PaypalController@pagoError');
-
 Route::get('usd', 'PaypalController@getUSD');
+
+// Rutas WebPay
+Route::get('/checkout', 'CheckoutController@initTransaction')->name('checkout');  
+Route::post('/checkout/webpay/response', 'CheckoutController@response')->name('checkout.webpay.response');  
+Route::post('/checkout/webpay/finish', 'CheckoutController@finish')->name('checkout.webpay.finish');
+
+Route::get('fin-compra', 'FinVentaController@finalizarVenta');
+Route::get('pago-ok', 'FinVentaController@compraOk');
+Route::get('pago-error', 'FinVentaController@compraError');

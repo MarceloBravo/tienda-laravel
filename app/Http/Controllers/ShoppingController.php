@@ -42,10 +42,11 @@ class ShoppingController extends Controller
         $masVendidos2 = OrdenItem::join('productos','ordenes_items.producto_id','=','productos.id')
                                 ->join('imagenes_productos','imagenes_productos.producto_id','=','productos.id')
                                 ->join('categorias','categorias.id','=','productos.categoria_id')
-                                ->where('imagenes_productos.default','=', 'true')
+                                ->where('imagenes_productos.default','=', true)
                                 ->select(DB::raw('@row := @row + 1 as fila'),'productos.id','productos.nombre','productos.precio','productos.precio_anterior', 'productos.slug', 'imagenes_productos.url','categorias.nombre as categoria', 'imagenes_productos.default',DB::raw('count(productos.id) as cant'))                                
                                 ->limit(6)
                                 ->groupBy('productos.id','productos.nombre','productos.precio','productos.precio_anterior', 'imagenes_productos.url', 'productos.slug','categorias.nombre', 'imagenes_productos.default')
+                                ->orderBy('cant','desc')
                                 ->get();
                                 //->toSql();
                                 //dd($masVendidos2);
@@ -54,22 +55,24 @@ class ShoppingController extends Controller
         $masVendidos3 = OrdenItem::join('productos','ordenes_items.producto_id','=','productos.id')
                                 ->join('imagenes_productos','imagenes_productos.producto_id','=','productos.id')
                                 ->join('categorias','categorias.id','=','productos.categoria_id')
-                                ->where('imagenes_productos.default', '=', 'true')
+                                ->where('imagenes_productos.default', '=', true)
                                 ->select(DB::raw('@row := @row + 1 as fila'),'productos.id','productos.nombre','productos.precio','productos.precio_anterior', 'productos.slug','imagenes_productos.url','categorias.nombre as categoria',DB::raw('count(productos.id) as cant'))
                                 ->offset(6)                                
                                 ->limit(6)
                                 ->groupBy('productos.id','productos.nombre','productos.precio','productos.precio_anterior', 'productos.slug','imagenes_productos.url','categorias.nombre')
+                                ->orderBy('cant','desc')
                                 ->get();
         
         DB::statement(DB::raw('set @row := 0'));
         $masVendidos4 = OrdenItem::join('productos','ordenes_items.producto_id','=','productos.id')
                                 ->join('imagenes_productos','imagenes_productos.producto_id','=','productos.id')
                                 ->join('categorias','categorias.id','=','productos.categoria_id')
-                                ->where('imagenes_productos.default', '=', 'true')
+                                ->where('imagenes_productos.default', '=', true)
                                 ->select(DB::raw('@row := @row + 1 as fila'),'productos.id','productos.nombre','productos.precio','productos.precio_anterior', 'productos.slug','imagenes_productos.url','categorias.nombre as categoria',DB::raw('count(productos.id) as cant'))
                                 ->offset(12)
                                 ->limit(6)
                                 ->groupBy('productos.id','productos.nombre','productos.precio','productos.precio_anterior', 'imagenes_productos.url','categorias.nombre')
+                                ->orderBy('cant','desc')
                                 ->get();
         
         $ofertas = Oferta::where('portada','=',true)->get();
