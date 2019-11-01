@@ -280,7 +280,7 @@
 						
 						<div class="products-widget-slick" data-nav="#slick-nav-3">
 						
-						@foreach($masVendidos2 as $item)
+						@foreach($masVendidos2 as $item)							
 							@if($item->fila == 1 || $item->fila == 4)
 							<div>
 							@endif
