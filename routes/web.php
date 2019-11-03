@@ -22,6 +22,7 @@ Route::bind('producto', function($slug){
     return App\Producto::where('slug','=',$slug)->first();
 });
 
+
 //Definiendo rutas
 Route::get('/','ShoppingController@Home');
 Route::get('/agregar/{producto}','ShoppingController@agregarAlCarrito');
@@ -57,3 +58,10 @@ Route::post('/checkout/webpay/finish', 'CheckoutController@finish')->name('check
 Route::get('fin-compra', 'FinVentaController@finalizarVenta');
 Route::get('pago-ok', 'FinVentaController@compraOk');
 Route::get('pago-error', 'FinVentaController@compraError');
+
+
+/* ****** ADMIN ******* */
+Route::get('admin/home', 'Admin\HomeController@index');
+Route::resource('admin/categorias', 'Admin\CategoriasController');
+Route::post('admin/categorias-filtro', 'Admin\CategoriasController@filtrar');
+

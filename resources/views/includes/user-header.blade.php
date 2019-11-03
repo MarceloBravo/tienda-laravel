@@ -1,3 +1,4 @@
+
 @if(Auth::check() )
     <li>
         <a href="#" class="dropdown-togle" data-togle="dropdown" role="button" aria-expanded="false">
