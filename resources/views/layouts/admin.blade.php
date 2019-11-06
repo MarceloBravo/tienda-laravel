@@ -22,11 +22,19 @@
 		<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+
+        <link rel="stylesheet" href="{{ asset('admin/assets/vendor/bootstrap/css/bootstrap.css') }}" />
+		<link rel="stylesheet" href="{{ asset('admin/assets/vendor/font-awesome/css/font-awesome.css') }}" />
+        <link rel="stylesheet" href="{{ asset('admin/assets/vendor/magnific-popup/magnific-popup.css') }}" />
+        <link rel="stylesheet" href="{{ asset('admin/assets/vendor/bootstrap-datepicker/css/datepicker3.css') }}" />
         <!-- Theme CSS -->
 		<link rel="stylesheet" href="{{ asset('admin/assets/stylesheets/theme.css') }}" />
+        <link rel="stylesheet" href="{{ asset('admin/assets/stylesheets/skins/default.css') }}" />
+        <link rel="stylesheet" href="{{ asset('admin/assets/stylesheets/theme-custom.css') }}" />
 
         <link rel="stylesheet" href="{{ asset('css/admin/home.css') }}" />
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -76,6 +84,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="/admin/marcas">
+                                                Marcas
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="pages-signin.html">
                                                 Productos
                                         </a>
@@ -118,14 +131,17 @@
 		<!-- /FOOTER -->
 
 		<!-- jQuery Plugins -->
-		<script src="{{ asset('js/jquery.min.js') }}"></script>
-		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-		<script src="{{ asset('js/slick.min.js') }}"></script>
-		<script src="{{ asset('js/nouislider.min.js') }}"></script>
-		<script src="{{ asset('js/jquery.zoom.min.js') }}"></script>
-		<script src="{{ asset('js/main.js') }}"></script>
-        <script src="{{ asset('admin/assets/vendor/nanoscroller/nanoscroller.js') }}"></script>
+        <script src="{{ asset('admin/assets/vendor/jquery/jquery.js') }}"></script>
+		<script src="{{ asset('admin/assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js') }}"></script>
+		<script src="{{ asset('admin/assets/vendor/bootstrap/js/bootstrap.js') }}"></script>
+		<script src="{{ asset('admin/assets/vendor/nanoscroller/nanoscroller.js') }}"></script>
+		<script src="{{ asset('admin/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+		<script src="{{ asset('admin/assets/vendor/magnific-popup/magnific-popup.js') }}"></script>
+		<script src="{{ asset('admin/assets/vendor/jquery-placeholder/jquery.placeholder.js') }}"></script>
 
+		
+
+        <!-- Vendor -->
         <script src="{{ asset('admin/assets/javascripts/theme.js') }}"></script>
         <script src="{{ asset('admin/assets/javascripts/theme.custom.js') }}"></script>
         <script src="{{ asset('admin/assets/javascripts/theme.init.js') }}"></script>

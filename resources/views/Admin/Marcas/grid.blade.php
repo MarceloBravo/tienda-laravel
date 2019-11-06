@@ -2,7 +2,7 @@
 
 @section('Content')
 
-    <header class="page-header">
+<header class="page-header">
         <h2>Mantenedores</h2>
     
         <div class="right-wrapper pull-right">
@@ -13,7 +13,7 @@
                     </a>
                 </li>
                 <li><span>Administración</span></li>
-                <li><span>Categorías</span></li>
+                <li><span>Marcas</span></li>
             </ol>
     
         </div>
@@ -25,15 +25,15 @@
                 <div class="panel-actions">
                 </div>
         
-                <h2 class="panel-title">Categorías</h2>
+                <h2 class="panel-title">Marcas</h2>
             </header>           
             <div class="panel-body">
                 <div class="row form-group">
                     <div class="col-md-6">
-                        <a href="/admin/categorias/create" class="btn btn-primary">Nuevo</a>
+                        <a href="/admin/marcas/create" class="btn btn-primary">Nuevo</a>
                     </div>
                     <div class="col-md-6">
-                        <form id="form-filtro" action="/admin/categorias-filtro" method="POST">                        
+                        <form id="form-filtro" action="/admin/marcas-filtro" method="POST">                        
                             @csrf
                             <input type="text" id="filtro" name="filtro" value="{{ $filtro }}" placeholder="Ingresa el texto a buscar" class="form-control"/>
                         </form>
@@ -43,30 +43,30 @@
                 <table class="table table-bordered table-striped mb-none" id="datatable-default">
                     <thead>
                         <tr>
-                            <th width="20%">Nombre</th>
-                            <th width="70%">Descripción</th>
+                            <th>Nombre</th>
                             <th width="10%">Editar</th>
                         </tr>
                     </thead>
                     <tbody id="tbody">
-                    @foreach($categorias as $item)                        
+                    @foreach($marcas as $item)                        
                         <tr>
                             <td>{{ $item->nombre }}</td>
-                            <td>{{ $item->descripcion }}</td>
                             <td>
-                                <a href="/admin/categorias/{{ $item->id }}/edit"><i class="fa fa-pencil"></i></a>
+                                <a href="/admin/marcas/{{ $item->id }}/edit"><i class="fa fa-pencil"></i></a>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-                @if(count($categorias) > 0)
-                    {{ $categorias->links() }}
+                @if(count($marcas) > 0)
+                    {{ $marcas->links() }}
                 @endif
             </div>
         </section>
     <!-- end: page -->
+
 @endsection
+
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/select2/select2.css') }}" />

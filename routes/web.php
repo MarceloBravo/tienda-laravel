@@ -62,6 +62,10 @@ Route::get('pago-error', 'FinVentaController@compraError');
 
 /* ****** ADMIN ******* */
 Route::get('admin/home', 'Admin\HomeController@index');
+Route::get('admin', 'Admin\HomeController@index');
 Route::resource('admin/categorias', 'Admin\CategoriasController');
 Route::post('admin/categorias-filtro', 'Admin\CategoriasController@filtrar');
+
+Route::resource('admin/marcas','Admin\MarcasController');
+Route::post('admin/marcas-filtro','Admin\MarcasController@filtrar');
 

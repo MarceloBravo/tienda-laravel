@@ -73,7 +73,7 @@ class CategoriasController extends Controller
     public function edit($id)  //Ver la inyección de dependencias en route/wep.php
     {
         $categoria = Categoria::find($id);
-        return view('admin.categorias.update', compact('categoria'));
+        return view('admin.categorias.edit', compact('categoria'));
     }
 
     /**

@@ -68,5 +68,5 @@
 
 
 @section('script')
-<script src="{{ asset('js/mantenedores/categorias/form.js') }}"></script>
+<script src="{{ asset('js/mantenedores/shared/form.js') }}"></script>
 @endsection
