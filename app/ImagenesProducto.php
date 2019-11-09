@@ -10,7 +10,7 @@ class ImagenesProducto extends Model
     use SoftDeletes;
     //
     protected $fillable = [
-        'producto_id', 'url', 'principal'
+        'producto_id', 'url', 'principal', 'nombre_archivo'
     ];
 
     //Relación muchos a uno

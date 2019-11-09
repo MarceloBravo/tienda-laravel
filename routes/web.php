@@ -18,9 +18,10 @@ Route::get('/', function () {
 
 
 //Iyectando dependencias
-Route::bind('producto', function($slug){
-    return App\Producto::where('slug','=',$slug)->first();
-});
+//Route::bind('producto', function($slug){
+//    return App\Producto::where('slug','=',$slug)->first();
+//});
+
 
 
 //Definiendo rutas
@@ -68,4 +69,7 @@ Route::post('admin/categorias-filtro', 'Admin\CategoriasController@filtrar');
 
 Route::resource('admin/marcas','Admin\MarcasController');
 Route::post('admin/marcas-filtro','Admin\MarcasController@filtrar');
+
+Route::resource('admin/productos', 'Admin\ProductosController');
+Route::post('admin/productos-filtro','Admin\ProductosController@filtrar');
 

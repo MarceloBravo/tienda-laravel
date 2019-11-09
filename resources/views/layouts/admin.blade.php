@@ -89,7 +89,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="pages-signin.html">
+                                        <a href="/admin/productos">
                                                 Productos
                                         </a>
                                     </li>

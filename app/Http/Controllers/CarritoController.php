@@ -31,8 +31,10 @@ class CarritoController extends Controller
     }
 
     //Agregar Item
-    public function agregar(Producto $producto) //Ver la inyección de dependencia en routes/web.php 
+    //public function agregar(Producto $producto) //Ver la inyección de dependencia en routes/web.php 
+    public function agregar($slug) 
     {
+        $producto = Producto::where('slug','=',$slug)->first();
         $this->agregarProducto($producto); //Trait
 
         return Redirect::to('/carrito');
@@ -61,8 +63,9 @@ class CarritoController extends Controller
     }
 
     //Modificar Cantidad del producto
-    public function cantidad(Producto $producto, $cantidad)
+    public function cantidad($slug, $cantidad)
     {
+        $producto = Producto::where('slug','=',$slug)->first();
         $carrito = \Session::get('carrito');
         $carrito[$producto->slug]->cantidad = $cantidad;
         \Session::put('carrito', $carrito);
@@ -71,8 +74,9 @@ class CarritoController extends Controller
     }
 
     //Eliminar item
-    public function eliminar(Producto $producto)
+    public function eliminar($slug)
     {
+        $producto = Producto::where('slug','=',$slug)->first();
         $carrito = \Session::get('carrito');
         unset($carrito[$producto->slug]);
         \Session::put('carrito',$carrito);

@@ -91,7 +91,7 @@ class ShoppingController extends Controller
                                     ->get();
         
         $ofertas = Oferta::where('portada','=',true)->get();
-
+        
         return view('welcome', compact('destacados','nuevos','masVendidos','masVendidos2','masVendidos3','masVendidos4','ofertas'));
     }
 
@@ -103,8 +103,9 @@ class ShoppingController extends Controller
         return view('pages.detalle', compact('producto','relacionados'));
     }
 
-    public function agregarAlCarrito(Producto $producto)
+    public function agregarAlCarrito($slug)
     {
+        $producto = Producto::where('slug','=',$slug)->first();
         $this->agregarProducto($producto);
         \Session::put('subTotal', $this->total());
 

@@ -90,7 +90,7 @@
 								<!-- tab -->
 								<div id="tab1" class="tab-pane active">
 									<div class="products-slick" data-nav="#slick-nav-1">
-										<!-- product -->
+										<!-- product -->										
 										@foreach($destacados as $producto)
 										<div class="product">
 											<div class="product-img">
@@ -219,7 +219,7 @@
 										@foreach($masVendidos as $item) 
 										<div class="product">
 											<div class="product-img">												
-												<img src="{{ $item->imagenes()->where('default','=',true)->first()->url }}" alt="">
+												<img src="{{ $item->imagenes()->where('default','=',true)->first() != null ? $item->imagenes()->where('default','=',true)->first()->url : '' }}" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 													<span class="new">NEW</span>

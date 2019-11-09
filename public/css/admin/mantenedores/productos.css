@@ -1,0 +1,15 @@
+#input-file{
+    display: none;
+}
+
+.col-align-left{
+    text-align: left;
+}
+
+.col-align-center{
+    text-align: center;
+}
+
+input[type='radio'], input[type='checkbox']{
+    cursor: pointer;
+}

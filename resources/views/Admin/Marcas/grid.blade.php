@@ -2,7 +2,7 @@
 
 @section('Content')
 
-<header class="page-header">
+    <header class="page-header">
         <h2>Mantenedores</h2>
     
         <div class="right-wrapper pull-right">
@@ -51,7 +51,7 @@
                     @foreach($marcas as $item)                        
                         <tr>
                             <td>{{ $item->nombre }}</td>
-                            <td>
+                            <td class="col-editar">
                                 <a href="/admin/marcas/{{ $item->id }}/edit"><i class="fa fa-pencil"></i></a>
                             </td>
                         </tr>
@@ -65,12 +65,14 @@
         </section>
     <!-- end: page -->
 
+
 @endsection
 
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/select2/select2.css') }}" />
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/jquery-datatables-bs3/assets/css/datatables.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/admin/mantenedores/grid.css') }}"/>
 @endsection
 
 @section('script')
