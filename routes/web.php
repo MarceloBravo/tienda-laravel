@@ -73,3 +73,9 @@ Route::post('admin/marcas-filtro','Admin\MarcasController@filtrar');
 Route::resource('admin/productos', 'Admin\ProductosController');
 Route::post('admin/productos-filtro','Admin\ProductosController@filtrar');
 
+Route::resource('admin/roles','Admin\RolesController');
+Route::post('admin/roles-filtro','Admin\RolesController@filtrar');
+
+Route::resource('admin/usuarios','Admin\UsuariosController');
+Route::post('admin/usuarios-filtro','Admin\UsuariosController@filtrar');
+

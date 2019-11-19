@@ -2,6 +2,7 @@
 
 @section('Content')
 
+
 <header class="page-header">
     <h2>Mantenedores</h2>
 
@@ -13,7 +14,7 @@
                 </a>
             </li>
             <li><span>Páginas</span></li>
-            <li><span>Productos</span></li>
+            <li><span>Roles</span></li>
         </ol>
 
         <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
@@ -30,19 +31,19 @@
                 <div class="panel-actions">
                 </div>
 
-                <h2 class="panel-title">Productos</h2>
+                <h2 class="panel-title">Roles</h2>
             </header>
             <div class="panel-body">
 
-                {!! Form::model($producto, ['id' => 'form', 'route'=>['productos.update', $producto->id], 'files'=>true,  'method'=>'PUT']) !!}
+                {!! Form::model($rol, ['id' => 'form', 'route'=>['roles.update', $rol->id], 'method'=>'PUT']) !!}
 
-                    @include('admin.productos.fields-form')
+                    @include('admin.roles.fields-form')
                     
                 {!! Form::close() !!}
                 <form id="form-images" action=""- method="POST" enctype="multipart/form-data">
                     
                 </form>
-                <form id="eliminar" method="post" action="/admin/productos/{{ $producto->id}}">
+                <form id="eliminar" method="post" action="/admin/roles/{{ $rol->id}}">
                     <input type="hidden" name="_method" value="DELETE"/>
                     @csrf
                 </form>
@@ -51,7 +52,7 @@
                     <div class="form-group buttons-group">
                         <button type="button" id="btnGrabar" class="btn btn-primary">Grabar</button>
                         <button type="button" id="btnEliminar" class="btn btn-danger">Eliminar</button>
-                        <a href="/admin/productos" class="btn btn-default">Cancelar</a>
+                        <a href="/admin/roles" class="btn btn-default">Cancelar</a>
                     </div>
                 </div>
             </div>
@@ -60,16 +61,13 @@
 </div>            
 <!-- end: page -->
 
-
 @endsection
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/custom/carrito.css') }}">
-<link rel="stylesheet" href="{{ asset('css/admin/mantenedores/productos.css') }}">
 <link rel="stylesheet" href="{{ asset('css/admin/mantenedores/forms.css') }}">
 @endsection
 
 @section('script')
-<script src="{{ asset('js/mantenedores/productos.js') }}"></script>
+<script src="{{ asset('js/mantenedores/shared/form.js') }}"></script>
 @endsection
-

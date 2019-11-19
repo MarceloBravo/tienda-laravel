@@ -102,12 +102,12 @@
                                 </a>
                                 <ul class="nav nav-children">
                                     <li>
-                                        <a href="ui-elements-typography.html">
+                                        <a href="/admin/roles">
                                                 <i class="fa fa-group"></i>Roles
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="ui-elements-icons.html">
+                                        <a href="/admin/usuarios">
                                                 <i class="fa fa-user"></i>Usuarios
                                         </a>
                                     </li>

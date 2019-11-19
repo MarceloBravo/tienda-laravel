@@ -14,6 +14,7 @@ class UsersTableSeeder extends Seeder
     {
         //
         User::insert([
+            'rut' => '11.111.111-1',
             'nombre' => 'Marcelo',
             'a_paterno' => 'Bravo',
             'a_materno' => 'Castillo',
@@ -28,6 +29,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         User::insert([
+            'rut' => '22.222.222-2',
             'nombre' => 'Juana',
             'a_paterno' => 'Perez',
             'a_materno' => 'Pereira',

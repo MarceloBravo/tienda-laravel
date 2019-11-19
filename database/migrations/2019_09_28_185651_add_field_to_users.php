@@ -16,7 +16,7 @@ class AddFieldToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             $table->bigInteger('rol_id')->unsigned();
-            $table->foreign('rol_id')->references('id')->on('roles');
+            $table->foreign('rol_id')->references('id')->on('roles');            
         });
     }
 

@@ -13,13 +13,12 @@
                 </a>
             </li>
             <li><span>Páginas</span></li>
-            <li><span>Productos</span></li>
+            <li><span>Roles</li>
         </ol>
 
         <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
     </div>
 </header>
-
 @include('includes.admin.messages')
 
 <!-- start: page -->
@@ -30,27 +29,20 @@
                 <div class="panel-actions">
                 </div>
 
-                <h2 class="panel-title">Productos</h2>
+                <h2 class="panel-title">Roles</h2>
             </header>
             <div class="panel-body">
+                
+                {!! Form::open(['id'=>'form','route'=>'roles.store', 'method'=>'post', 'files'=>true]) !!}
 
-                {!! Form::model($producto, ['id' => 'form', 'route'=>['productos.update', $producto->id], 'files'=>true,  'method'=>'PUT']) !!}
-
-                    @include('admin.productos.fields-form')
+                    @include('admin.roles.fields-form')
                     
                 {!! Form::close() !!}
-                <form id="form-images" action=""- method="POST" enctype="multipart/form-data">
-                    
-                </form>
-                <form id="eliminar" method="post" action="/admin/productos/{{ $producto->id}}">
-                    <input type="hidden" name="_method" value="DELETE"/>
-                    @csrf
-                </form>
-
+                
                 <div class="row">
                     <div class="form-group buttons-group">
                         <button type="button" id="btnGrabar" class="btn btn-primary">Grabar</button>
-                        <button type="button" id="btnEliminar" class="btn btn-danger">Eliminar</button>
+                        <button type="button" id="btnEliminar" class="btn btn-danger" disabled>Eliminar</button>
                         <a href="/admin/productos" class="btn btn-default">Cancelar</a>
                     </div>
                 </div>
@@ -60,16 +52,14 @@
 </div>            
 <!-- end: page -->
 
-
 @endsection
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/custom/carrito.css') }}">
-<link rel="stylesheet" href="{{ asset('css/admin/mantenedores/productos.css') }}">
 <link rel="stylesheet" href="{{ asset('css/admin/mantenedores/forms.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin/mantenedores/productos.css') }}">
 @endsection
 
 @section('script')
-<script src="{{ asset('js/mantenedores/productos.js') }}"></script>
+<script src="{{ asset('js/mantenedores/shared/form.js') }}"></script>
 @endsection
-
