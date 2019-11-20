@@ -79,3 +79,14 @@ Route::post('admin/roles-filtro','Admin\RolesController@filtrar');
 Route::resource('admin/usuarios','Admin\UsuariosController');
 Route::post('admin/usuarios-filtro','Admin\UsuariosController@filtrar');
 
+Route::resource('admin/regiones','Admin\RegionesController');
+Route::post('admin/regiones-filtro','Admin\RegionesController@filtrar');
+Route::get('admin/get-regiones/{idPais}','Admin\RegionesController@getRegiones');
+
+Route::resource('admin/comunas','Admin\ComunasController');
+Route::post('admin/comunas-filtro','Admin\ComunasController@filtrar');
+Route::get('admin/get-comunas/{idRegion}','Admin\ComunasController@getComunas');
+
+Route::resource('admin/ciudades','Admin\CiudadesController');
+Route::post('admin/ciudades-filtro','Admin\CiudadesController@filtrar');
+Route::get('admin/get-ciudades/{idComuna}','Admin\CiudadesController@getCiudades');
