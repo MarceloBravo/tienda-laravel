@@ -91,7 +91,7 @@ class ComunasController extends Controller
 
     public function getComunas($idRegion)
     {
-        $comunas = Comuna::where('id_region',$idRegion)->pluck('nombre','id');
-        return json_encode($comunas);
+        $comunas = Comuna::where('id_region',$idRegion)->select('nombre','id')->get();
+        return response()->json($comunas->ToArray());
     }
 }

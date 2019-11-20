@@ -88,7 +88,23 @@ class UsuariosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario = User::find($id);
+
+        $comuna = Comuna::find($usuario->ciudad->id_comuna);
+        $region = Region::find($comuna->id_region);
+        $pais = Pais::find($region->id_pais);
+
+        $roles = Rol::pluck('nombre','id');
+        $paises = Pais::pluck('nombre','id');
+        $regiones = Region::where('id_pais',$pais->id)->pluck('nombre', 'id');
+        $comunas = Comuna::where('id_region',$region->id)->pluck('nombre', 'id');
+        $ciudades = Ciudad::where('id_comuna', $comuna->id)->pluck('nombre', 'id');
+
+        $usuario->id_pais = $pais->id;
+        $usuario->id_region = $region->id;
+        $usuario->id_comuna = $comuna->id;
+
+        return view('admin.usuarios.edit',compact('usuario','roles','paises','regiones','comunas','ciudades'));
     }
 
     /**
@@ -98,9 +114,19 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UsuariosRequest $request, $id)
     {
-        //
+        $usuario = User::find($id);
+        if($request->password == "")
+        {
+            $grabado = $usuario->fill($request->except(['password']))->save();
+        }else{
+            $grabado = $usuario->fill($request->all())->save();
+        }
+        $mensaje = $grabado ? "El usuario ha sido actualizado." : "Ocurrió un error al intentar actualizar el registro.";
+        $tipoMensaje = $grabado ? "success" : "danger";
+
+        return Redirect::to('/admin/usuarios')->with('message',$mensaje)->with('type-message',$tipoMensaje);
     }
 
     /**
@@ -111,11 +137,28 @@ class UsuariosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = User::find($id);
+        $eliminado = $usuario->delete();
+        $mensaje = $eliminado ? "El usuario ha sido eliminado." : "Error al intentar eliminar el registro.";
+        $tipoMensaje = $eliminado ? "success" : "danger";
+
+        return Redirect::to('/admin/usuarios')->with('message',$mensaje)->with('type-message',$tipoMensaje);
     }
 
     public function filtrar(Request $request)
     {
-        
+        $filtro = $request->filtro;
+        if($filtro == ""){
+            return Redirect::to('/admin/usuarios');
+        }
+        $usuarios = User::join('roles','users.rol_id','=','roles.id')
+                        ->where('users.nombre','Like','%'.$filtro.'%')
+                        ->orWhere('users.a_paterno','Like','%'.$filtro.'%')
+                        ->orWhere('users.a_materno','Like','%'.$filtro.'%')
+                        ->orWhere('users.nickname','Like','%'.$filtro.'%')
+                        ->orWhere('roles.nombre','Like','%'.$filtro.'%')
+                        ->select('users.*')
+                        ->paginate(15);
+        return view('admin.usuarios.grid', compact('usuarios','filtro'));                        
     }
 }

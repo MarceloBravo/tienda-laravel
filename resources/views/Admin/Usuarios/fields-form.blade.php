@@ -1,4 +1,10 @@
 <div class="form-group">
+    {!! Form::label('rut','Rut',['class'=>'label-form col-md-3']) !!}
+    <div class="col-md-4">
+        {!! Form::text('rut',null,['class'=>'form-control','placeholder'=>'Ingrese el rut del usuario.']) !!}
+    </div>
+</div>
+<div class="form-group">
     {!! Form::label('nombre','Nombre',['class'=>'label-form col-md-3']) !!}
     <div class="col-md-4">
         {!! Form::text('nombre',null,['class'=>'form-control','placeholder'=>'Ingrese el nombre del usuario.']) !!}
@@ -37,25 +43,25 @@
 <div class="form-group">
     {!! Form::label('id_pais','Pais',['class'=>'label-form col-md-3']) !!}
     <div class="col-md-4">
-        {!! Form::select('id_pais',$paises, null,['class'=>'form-control','placeholder'=>'Seleccione un pais.']) !!}
+        {!! Form::select('id_pais',$paises, null,['id'=>'id_pais','class'=>'form-control','placeholder'=>'Seleccione un pais.']) !!}
     </div>
 </div>
 <div class="form-group">
     {!! Form::label('id_region','Región',['class'=>'label-form col-md-3']) !!}
     <div class="col-md-4">
-        {!! Form::select('id_region',$regiones, null,['class'=>'form-control','placeholder'=>'Seleccione una región.']) !!}
+        {!! Form::select('id_region',$regiones, null,['id'=>'id_region','class'=>'form-control','placeholder'=>'Seleccione una región.']) !!}
     </div>
 </div>
 <div class="form-group">
     {!! Form::label('id_comuna','Comuna',['class'=>'label-form col-md-3']) !!}
     <div class="col-md-4">
-        {!! Form::select('id_comuna',$comunas, null,['class'=>'form-control','placeholder'=>'Seleccione una comuna.']) !!}
+        {!! Form::select('id_comuna',$comunas, null,['id'=>'id_comuna','class'=>'form-control','placeholder'=>'Seleccione una comuna.']) !!}
     </div>
 </div>
 <div class="form-group">
     {!! Form::label('id_ciudad','Ciudad',['class'=>'label-form col-md-3']) !!}
     <div class="col-md-4">
-        {!! Form::select('id_ciudad',$ciudades, null,['class'=>'form-control','placeholder'=>'Seleccione una ciudad.']) !!}
+        {!! Form::select('id_ciudad',$ciudades, null,['id'=>'id_ciudad','class'=>'form-control','placeholder'=>'Seleccione una ciudad.']) !!}
     </div>
 </div>
 <div class="form-group">

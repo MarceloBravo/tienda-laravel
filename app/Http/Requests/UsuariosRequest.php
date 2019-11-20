@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\ValidaRut;
 
 class UsuariosRequest extends FormRequest
 {
@@ -24,15 +25,15 @@ class UsuariosRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'rut' => 'required|min:12|max:13|unique:users,rut,'.$this->id,
+            'rut' => ['required','min:12','max:13','unique:users,rut,'.$this->usuario, new ValidaRut],
             'nombre' => 'required|min:3|max:50',
             'a_paterno' => 'required|min:3|max:50',
             'a_materno' => 'required|min:3|max:50',
-            'email' => 'required|min:12|email|unique:users,email,'.$this->id,
-            'nickname' => 'required|min:3|max:20|unique:users,nickname,'.$this->id,            
+            'email' => 'required|min:12|email|unique:users,email,'.$this->usuario,
+            'nickname' => 'required|min:3|max:20|unique:users,nickname,'.$this->usuario,            
             'direccion' => 'required|min:5|max:255',
-            'rol_id' => 'required|exists:roles',
-            'id_ciudad' => 'required|exists:roles',            
+            'rol_id' => 'required|exists:roles,id',
+            'id_ciudad' => 'required|exists:ciudades,id',            
         ];
 
         if($this->method() == 'POST')

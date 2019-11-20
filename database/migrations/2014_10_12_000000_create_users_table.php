@@ -23,7 +23,6 @@ class CreateUsersTable extends Migration
             $table->string('nickname',20);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('activo');
             $table->string('direccion');
             $table->rememberToken();
             $table->timestamps();

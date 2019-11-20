@@ -91,7 +91,7 @@ class CiudadesController extends Controller
 
     public function getCiudades($idComuna)
     {
-        $ciudades = Ciudad::where('id_comuna',$idComuna)->pluck('nombre','id');
-        return json_encode($ciudades);
+        $ciudades = Ciudad::where('id_comuna',$idComuna)->select('nombre','id')->get();
+        return response()->json($ciudades->ToArray());
     }
 }

@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laraveles\Spanish\SpanishServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        //lluminate\Support\SupportServiceProvider::class,
+        //lluminate\Support\SupportServiceProvider::class
 
     ],
 

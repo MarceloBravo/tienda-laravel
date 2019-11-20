@@ -33,16 +33,19 @@
             </header>
             <div class="panel-body">
                 
-                {!! Form::open(['id'=>'form','route'=>'usuarios.store', 'method'=>'post']) !!}
+                {!! Form::model($usuario,['id'=>'form','route'=>['usuarios.update', $usuario->id], 'method'=>'put']) !!}
 
                     @include('admin.usuarios.fields-form')
                     
                 {!! Form::close() !!}
                 
+                {!! Form::model($usuario, ['id'=>'eliminar', 'route'=>['usuarios.destroy', $usuario->id], 'method'=>'delete']) !!}
+                {!! Form::close() !!}
+
                 <div class="row">
                     <div class="form-group buttons-group">
                         <button type="button" id="btnGrabar" class="btn btn-primary">Grabar</button>
-                        <button type="button" id="btnEliminar" class="btn btn-danger" disabled>Eliminar</button>
+                        <button type="button" id="btnEliminar" class="btn btn-danger">Eliminar</button>
                         <a href="/admin/usuarios" class="btn btn-default">Cancelar</a>
                     </div>
                 </div>

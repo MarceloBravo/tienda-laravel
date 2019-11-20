@@ -91,7 +91,7 @@ class RegionesController extends Controller
 
     public function getRegiones($idPais)
     {
-        $regiones = Region::where('id_pais',$idPais)->pluck('nombre','id');
-        return json_encode($regiones);
+        $regiones = Region::where('id_pais',$idPais)->select('nombre','id')->get();
+        return response()->json($regiones->ToArray());
     }
 }
