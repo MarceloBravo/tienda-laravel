@@ -13,7 +13,7 @@
                 </a>
             </li>
             <li><span>Páginas</span></li>
-            <li><span>Productos</span></li>
+            <li><span>Pantallas</span></li>
         </ol>
 
         <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
@@ -30,7 +30,7 @@
                 <div class="panel-actions">
                 </div>
 
-                <h2 class="panel-title">Productos</h2>
+                <h2 class="panel-title">Pantallas</h2>
             </header>
             <div class="panel-body">
 
