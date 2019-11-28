@@ -50,10 +50,9 @@
                     </thead>
                     <tbody id="tbody">
                     @foreach($menus as $item)
-                        
                         <tr>
                             <td>{{ $item->nombre }}</td>
-                            <td>{{ isset($item->pantalla()->nombre) ? $item->pantalla()->nombre : "" }}</td>
+                            <td>{{ isset($item->pantalla()->get()[0]->nombre) ? $item->pantalla()->get()[0]->nombre : "" }}</td>
                             <td class="col-editar">
                                 <a href="/admin/menus/{{ $item->id }}/edit"><i class="fa fa-pencil"></i></a>
                             </td>

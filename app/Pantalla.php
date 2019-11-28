@@ -18,13 +18,13 @@ class Pantalla extends Model
     //Relación uno a muchos (Una pantalla a muchos permnisos)
     public function permisos()
     {
-        return $this->hasMany('App\Permiso');
+        return $this->belongsTo('App\Permiso');
     }
 
-    //Relación uno a muchos (Una pantalla a muchos menus)
     public function menus()
     {
-        return $this->hasOne('App\Menu');
+        return $this->hasMany('App\Menu');
     }
+    
     
 }

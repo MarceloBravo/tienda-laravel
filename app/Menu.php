@@ -18,6 +18,6 @@ class Menu extends Model
     //un menu a una pantalla
     public function pantalla()
     {
-        return $this->belongsTo('App\Pantalla','id','pantalla_id');
+        return $this->belongsTo('App\Pantalla');
     }
 }
