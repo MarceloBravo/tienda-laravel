@@ -24,7 +24,7 @@ class Pantalla extends Model
     //Relación uno a muchos (Una pantalla a muchos menus)
     public function menus()
     {
-        return $this->hasMany('App\Menu');
+        return $this->hasOne('App\Menu');
     }
     
 }

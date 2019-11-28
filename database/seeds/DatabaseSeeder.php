@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         //$this->call(ImagenesProductosTableSeeder::class);
         //$this->call(OfertasSeeder::class);
         //$this->call(PantallasSeeder::class);
+        //$this->call(MenusSeeder::class);
     }
 }

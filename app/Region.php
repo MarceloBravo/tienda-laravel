@@ -15,11 +15,11 @@ class Region extends Model
 
     public function comunas()
     {
-        return $this->belongsTo('\App\comunas');
+        return $this->belongsTo('\App\Comuna');
     }
 
     public function pais()
     {
-        return $this->hasOne('\App\paises');
+        return $this->hasOne('\App\Pais');
     }
 }

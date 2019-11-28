@@ -16,7 +16,7 @@ class CreateMenus extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre', 50)->unique();
-            $table->string('icono_class', 15);
+            $table->string('icono_class', 50);
             $table->bigInteger('menu_padre_id')->nullable();
             $table->bigInteger('pantalla_id')->unsigned();
             $table->foreign('pantalla_id')->references('id')->on('pantallas');

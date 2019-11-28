@@ -15,6 +15,7 @@ class AddFieldToMenus extends Migration
     {
         Schema::table('menus', function (Blueprint $table) {
             $table->Integer('posicion')->unsigned();
+            $table->string('url',255)->default("");
         });
     }
 

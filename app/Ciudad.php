@@ -15,7 +15,7 @@ class Ciudad extends Model
 
     public function usuarios()
     {
-        return $this->belongTo('\App\users');
+        return $this->belongsTo('\App\users');
     }
 
     public function comuna()

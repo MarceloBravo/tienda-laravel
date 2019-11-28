@@ -116,6 +116,11 @@
                                                 <i class="fa fa-user"></i>Usuarios
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="/admin/menus">
+                                                <i class="fa fa-user"></i>Menus
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>

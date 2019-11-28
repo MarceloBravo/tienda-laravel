@@ -12,12 +12,12 @@ class Menu extends Model
     protected $table = "Menus";
 
     protected $fillable = [
-        'nombre', 'icono_class', 'menu_padre_id', 'pantalla_id'
+        'nombre', 'icono_class', 'menu_padre_id', 'pantalla_id', 'posicion'
     ];
 
-    //Muchos a uno (un menu a una pantalla)
+    //un menu a una pantalla
     public function pantalla()
     {
-        return $this->hasOne('App\Pantalla');
+        return $this->belongsTo('App\Pantalla','id','pantalla_id');
     }
 }

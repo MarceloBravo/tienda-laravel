@@ -95,3 +95,6 @@ Route::resource('admin/pantallas', 'Admin\PantallasController');
 Route::post('admin/pantallas-filtro','Admin\PantallasController@filtrar');
 Route::get('admin/pantallas-menus/{idPantalla}','Admin\PantallasController@getMenus');
 Route::get('admin/pantallas-permisos/{idPantalla}','Admin\PantallasController@getPermisos');
+
+Route::resource('admin/menus','Admin\MenusController');
+Route::post('admin/menus-filtro','Admin\MenusController@filtrar');
