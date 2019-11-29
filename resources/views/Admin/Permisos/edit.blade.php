@@ -36,6 +36,7 @@
                     <form id="form" class="" method="POST" action="/admin/permisos/{{ $idRol }}">
                         <input type="hidden" name="_method" value="PUT" />
                         @csrf
+                        <input type="hidden" name="_rol" value="{{ $idRol }}" />
 
                         <div class="form-group row-title">
                             <label class="col-md-3">Pantalla</label>
@@ -47,25 +48,27 @@
                             <div class="form-group">
                                 <label for="{{ $item->id }}" class="col-md-3">{{ $item->pantalla }}</label>
                                 <div class="col-md-3 col-checkbox">
+                                    <input type="hidden" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-crear' : $item->id.'-0-crear' }}" value="0" />
                                     @if($item->crear)                                        
-                                        <input type="checkbox" id="{{ is_null($item->id) ? 'nuevo-'.$item->fila : $item->id }}" name="{{ is_null($item->id) ? 'nuevo-'.$item->fila : $item->id }}" checked="true" value="1"/>
+                                        <input type="checkbox" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-crear' : $item->id.'-0-crear' }}" checked="checked" value="1"/>
                                     @else
-                                        <input type="checkbox" id="{{ is_null($item->id) ? 'nuevo-'.$item->fila : $item->id }}" name="{{ is_null($item->id) ? 'nuevo-'.$item->fila : $item->id }}" value="1"/>
-                                        <input type="hidden" name="{{ is_null($item->id) ? 'nuevo-'.$item->fila : $item->id }}" value="0" />
+                                        <input type="checkbox" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-crear' : $item->id.'-0-crear' }}" value="1"/>                                        
                                     @endif
                                 </div>
                                 <div class="col-md-3 col-checkbox">
+                                    <input type="hidden" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-actualizar' : $item->id.'-0-actualizar' }}" value="0" />
                                     @if($item->actualizar)
-                                        <input type="checkbox" id="{{ is_null($item->id) ? 'nuevo-'.$item->fila : $item->id }}" name="{{ is_null($item->id) ? 'nuevo-'.$item->fila : $item->id }}" checked="FALSE" value="true"/>
+                                        <input type="checkbox" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-actualizar' : $item->id.'-0-actualizar' }}" checked="checked" value="1"/>
                                     @else
-                                        <input type="checkbox" id="{{ is_null($item->id) ? 'nuevo-'.$item->fila : $item->id }}" name="{{ is_null($item->id) ? 'nuevo-'.$item->fila : $item->id }}" value="FALSE"/>
+                                        <input type="checkbox" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-actualizar' : $item->id.'-0-actualizar' }}" value="1"/>
                                     @endif
                                 </div>
                                 <div class="col-md-3 col-checkbox">
+                                    <input type="hidden" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-eliminar' : $item->id.'-0-eliminar' }}" value="0" />
                                     @if($item->eliminar)
-                                        <input type="checkbox" id="{{ is_null($item->id) ? 'nuevo-'.$item->fila : $item->id }}" name="{{ is_null($item->id) ? 'nuevo-'.$item->fila : $item->id }}" checked="checked"/>
+                                        <input type="checkbox" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-eliminar' : $item->id.'-0-eliminar' }}" checked="checked" value="1"/>
                                     @else
-                                        <input type="checkbox" id="{{ is_null($item->id) ? 'nuevo-'.$item->fila : $item->id }}" name="{{ is_null($item->id) ? 'nuevo-'.$item->fila : $item->id }}" />
+                                        <input type="checkbox" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-eliminar' : $item->id.'-0-eliminar' }}" value="1"/>
                                     @endif
                                 </div>
                             </div>
