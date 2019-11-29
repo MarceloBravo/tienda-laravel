@@ -121,6 +121,11 @@
                                                 <i class="fa fa-user"></i>Menus
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="/admin/permisos">
+                                                <i class="fa fa-user"></i>Permisos
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>

@@ -1,0 +1,13 @@
+.row-title{
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: #dadada;
+}
+
+.row-title > label{
+    font-weight: bold;
+}
+
+.col-checkbox{
+    text-align: center;
+}

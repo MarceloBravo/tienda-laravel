@@ -98,3 +98,6 @@ Route::get('admin/pantallas-permisos/{idPantalla}','Admin\PantallasController@ge
 
 Route::resource('admin/menus','Admin\MenusController');
 Route::post('admin/menus-filtro','Admin\MenusController@filtrar');
+
+Route::resource('admin/permisos','Admin\PermisosController');
+Route::post('admin/permisos-filtro','Admin\PermisosController@filtrar');
