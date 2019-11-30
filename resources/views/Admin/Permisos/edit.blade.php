@@ -50,7 +50,7 @@
                                 <div class="col-md-3 col-checkbox">
                                     <input type="hidden" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-crear' : $item->id.'-0-crear' }}" value="0" />
                                     @if($item->crear)                                        
-                                        <input type="checkbox" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-crear' : $item->id.'-0-crear' }}" checked="checked" value="1"/>
+                                        <input type="checkbox"  name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-crear' : $item->id.'-0-crear' }}" checked="checked" value="1"/>
                                     @else
                                         <input type="checkbox" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-crear' : $item->id.'-0-crear' }}" value="1"/>                                        
                                     @endif
@@ -75,6 +75,12 @@
                         @endforeach
                         
                     </form>
+                    <div class="form-group">                                        
+                        <label for="chk-select-all" class="col-md-3">Seleccionar todos</label>
+                        <div class="col-md-9">
+                            <input type="checkbox" id="chk-select-all" onchange="selectAll()"/>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="form-group buttons-group">
@@ -99,4 +105,5 @@
 
 @section('script')
 <script src="{{ asset('js/mantenedores/shared/form.js') }}"></script>
+<script src="{{ asset('js/mantenedores/permisos.js') }}"></script>
 @endsection
