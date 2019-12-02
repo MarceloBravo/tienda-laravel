@@ -18,7 +18,7 @@ class MarcasController extends Controller
     public function index($filtro = "")
     {
         $marcas = Marca::paginate(10);
-
+ 
         return view('admin.marcas.grid', compact('marcas','filtro'));
     }
 

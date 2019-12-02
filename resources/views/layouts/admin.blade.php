@@ -66,68 +66,15 @@
                 <div class="nano-content">
                     <nav id="menu" class="nav-main" role="navigation">
                         <ul class="nav nav-main">
-                            <li>
-                                <a href="index.html">
-                                    <i class="fa fa-home" aria-hidden="true"></i>
-                                    <span>Cuadro de mando</span>
-                                </a>
-                            </li>                            
-                            <li class="nav-parent">
-                                <a>
-                                    <i class="fa fa-copy" aria-hidden="true"></i>
-                                    <span>Páginas</span>
-                                </a>
-                                <ul class="nav nav-children">
-                                    <li>
-                                        <a href="/admin/categorias">
-                                                Categorías
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin/marcas">
-                                                Marcas
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin/productos">
-                                                Productos
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-parent">
-                                <a>
-                                    <i class="fa fa-cogs" aria-hidden="true"></i>
-                                    <span>Administración</span>
-                                </a>
-                                <ul class="nav nav-children">
-                                    <li>
-                                        <a href="/admin/pantallas">
-                                                <i class="fa fa-group"></i>Pantallas
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin/roles">
-                                                <i class="fa fa-group"></i>Roles
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin/usuarios">
-                                                <i class="fa fa-user"></i>Usuarios
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin/menus">
-                                                <i class="fa fa-user"></i>Menus
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin/permisos">
-                                                <i class="fa fa-user"></i>Permisos
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                            @if(\Session::has('menu'))
+                            
+                                @foreach(\Session::get('menu') as $menu)
+                                    
+                                    @include('layouts.menus',['menu'=> $menu])
+                                
+                                @endforeach
+
+                            @endif
                         </ul>
                     </nav>
                 </div>

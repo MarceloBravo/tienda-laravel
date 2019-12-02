@@ -15,6 +15,6 @@ class Pais extends Model
 
     public function regiones()
     {
-        return $this->belongsTo('\App\regiones');
+        return $this->hasMany('\App\regiones','id','id_pais');
     }
 }

@@ -12,6 +12,13 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('url', 'Url', array('class'=>'col-md-3 control-label')) !!}
+    <div class="col-md-6">
+        {!! Form::text('url',null,array('class'=>'form-control','placeholder'=>'Ingrese la ruta para acceder al formuario por la web.'))  !!}
+    </div>
+</div>
+
+<div class="form-group">
     {!! Form::label('posicion', 'Posición', array('class'=>'col-md-3 control-label')) !!}
     <div class="col-md-6">
         {!! Form::number('posicion',null,array('class'=>'form-control','placeholder'=>'Ingrese la posición que ocupara el menú'))  !!}

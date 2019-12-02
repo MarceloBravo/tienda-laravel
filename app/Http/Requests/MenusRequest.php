@@ -25,8 +25,8 @@ class MenusRequest extends FormRequest
     {
         return [
             'nombre' => 'required|min:3|max:50|unique:menus,nombre,'.$this->menu,
-            'icono_class' => 'max:15',
-            'menu_padre_id' => 'exists:menus,id',
+            'icono_class' => 'max:50',
+            'menu_padre_id' => 'nullable|exists:menus,id',
             'pantalla_id' => 'exists:pantallas,id',
             'posicion' => 'integer|min:1'
          ];
@@ -36,7 +36,7 @@ class MenusRequest extends FormRequest
     {
         return  [
             'nombre.required' => 'Debes ingresar el nombre del menú.',
-            'icono_class.max' => 'El código del icono no debe sobrepasar los 15 carácteres. Ingresa un código más corto.' ,
+            'icono_class.max' => 'El código del icono no debe sobrepasar los 50 carácteres. Ingresa un código más corto.' ,
             'menu_padre_id.exists' => 'El menú padre no es válido o no existe.',
             'pantalla_id.exists' => 'La pantalla seleccionada no es válida o no existe.',
             'posicion.integer' => 'La posición ingresada no es un número entero.',

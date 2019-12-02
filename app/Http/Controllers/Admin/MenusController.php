@@ -47,7 +47,7 @@ class MenusController extends Controller
     {
         $menu = new Menu();
         $grabado = $menu->fill($request->all())->save();
-        $mensaje = $grabado ? "El registro ha sido grabado." : "Ocurrió un error al intentar ingresar el registro.";
+        $mensaje = $grabado ? "El registro ha sido grabado. Selecciona \"Home\" en el menú lateral para apreciar los cambios." : "Ocurrió un error al intentar ingresar el registro.";
         $tipoMensaje = $grabado ? "success" : "danger";
 
         return Redirect::to('/admin/menus')->with('message',$mensaje)->with('type-message',$tipoMensaje);
@@ -90,7 +90,7 @@ class MenusController extends Controller
     {
         $menu = Menu::find($id);
         $actualizado = $menu->fill($request->all())->save();
-        $mensaje = $actualizado ? "El registro ha sido actualizado." : "Ocurrió un error al intentar actualizar el registro.";
+        $mensaje = $actualizado ? "El registro ha sido actualizado. Selecciona \"Home\" en el menú lateral para apreciar los cambios." : "Ocurrió un error al intentar actualizar el registro.";
         $tipoMensaje = $actualizado ? "success" : "danger";
 
         return Redirect::to('/admin/menus')->with('message',$mensaje)->with('type-message',$tipoMensaje);
@@ -106,7 +106,7 @@ class MenusController extends Controller
     {
         $menu = Menu::find($id);
         $eliminado = $menu->delete();
-        $mensaje = $eliminado ? "El registro ha sido eliminado." : "Ocurrió un error al intentar eliminar el registro.";
+        $mensaje = $eliminado ? "El registro ha sido eliminado. Selecciona \"Home\" en el menú lateral para apreciar los cambios." : "Ocurrió un error al intentar eliminar el registro.";
         $tipoMensaje = $eliminado ? "success" : "danger";
 
         return Redirect::to('/admin/menus')->with('message',$mensaje)->with('type-message',$tipoMensaje);

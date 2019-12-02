@@ -79,6 +79,12 @@ Route::post('admin/roles-filtro','Admin\RolesController@filtrar');
 Route::resource('admin/usuarios','Admin\UsuariosController');
 Route::post('admin/usuarios-filtro','Admin\UsuariosController@filtrar');
 
+
+
+Route::resource('admin/paises','Admin\PaisesController');
+Route::post('admin/paises-filtro','Admin\PaisesController@filtrar');
+Route::get('admin/get-paises','Admin\PaisesController@getPaises');
+
 Route::resource('admin/regiones','Admin\RegionesController');
 Route::post('admin/regiones-filtro','Admin\RegionesController@filtrar');
 Route::get('admin/get-regiones/{idPais}','Admin\RegionesController@getRegiones');
@@ -91,6 +97,8 @@ Route::resource('admin/ciudades','Admin\CiudadesController');
 Route::post('admin/ciudades-filtro','Admin\CiudadesController@filtrar');
 Route::get('admin/get-ciudades/{idComuna}','Admin\CiudadesController@getCiudades');
 
+
+
 Route::resource('admin/pantallas', 'Admin\PantallasController');
 Route::post('admin/pantallas-filtro','Admin\PantallasController@filtrar');
 Route::get('admin/pantallas-menus/{idPantalla}','Admin\PantallasController@getMenus');
@@ -101,3 +109,4 @@ Route::post('admin/menus-filtro','Admin\MenusController@filtrar');
 
 Route::resource('admin/permisos','Admin\PermisosController');
 Route::post('admin/permisos-filtro','Admin\PermisosController@filtrar');
+

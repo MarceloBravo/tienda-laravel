@@ -9,9 +9,9 @@ class Region extends Model
 {
     use SoftDeletes;
 
-    protected $table= 'regiones';
+    protected $table = 'regiones';
 
-    protected $fillable = ['nombre', 'id_paises'];
+    protected $fillable = ['nombre', 'id_pais'];
 
     public function comunas()
     {
@@ -20,6 +20,6 @@ class Region extends Model
 
     public function pais()
     {
-        return $this->hasOne('\App\Pais');
+        return $this->hasOne('\App\Pais','id','id_pais');
     }
 }

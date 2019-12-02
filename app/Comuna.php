@@ -11,15 +11,15 @@ class Comuna extends Model
 
     protected $table = 'comunas';
 
-    protected $fillable = ['nombre','id_regiones'];
+    protected $fillable = ['nombre','id_region'];
 
     public function ciudades()
     {
-        return $this->belongsTo('\App\regiones');
+        return $this->belongsTo('\App\region');
     }
 
     public function region()
     {
-        return $this->hasOne('\App\regiones');
+        return $this->hasOne('\App\region','id','id_region');
     }
 }
