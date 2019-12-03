@@ -40,6 +40,7 @@
 
                         <div class="form-group row-title">
                             <label class="col-md-3">Pantalla</label>
+                            <label class="col-md-3 col-checkbox">Acceder</label>
                             <label class="col-md-3 col-checkbox">Crear</label>
                             <label class="col-md-3 col-checkbox">Actualizar</label>
                             <label class="col-md-3 col-checkbox">Eliminar</label>
@@ -47,6 +48,14 @@
                         @foreach($permisos as $item)                            
                             <div class="form-group">
                                 <label for="{{ $item->id }}" class="col-md-3">{{ $item->pantalla }}</label>
+                                <div class="col-md-3 col-checkbox">
+                                    <input type="hidden" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-acceder' : $item->id.'-0-acceder' }}" value="0" />
+                                    @if($item->acceder)                                        
+                                        <input type="checkbox"  name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-acceder' : $item->id.'-0-acceder' }}" checked="checked" value="1"/>
+                                    @else
+                                        <input type="checkbox" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-acceder' : $item->id.'-0-acceder' }}" value="1"/>                                        
+                                    @endif
+                                </div>
                                 <div class="col-md-3 col-checkbox">
                                     <input type="hidden" name="{{ is_null($item->id) ? '0-'.$item->pantalla_id.'-crear' : $item->id.'-0-crear' }}" value="0" />
                                     @if($item->crear)                                        

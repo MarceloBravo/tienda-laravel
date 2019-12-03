@@ -14,6 +14,16 @@ use Redirect;
 class CiudadesController extends Controller
 {
     private $pantalla = "Ciudades";
+
+    public function __construct()
+    {
+        $model = new Ciudad(); 
+        $tabla = $model->getTable();
+        $this->middleware('permisos:'.$tabla.',acceder')->only('index');
+        $this->middleware('permisos:'.$tabla.',crear')->only('create','store');
+        $this->middleware('permisos:'.$tabla.',actualizar')->only('edit','update');
+        $this->middleware('permisos:'.$tabla.',eliminar')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

@@ -19,6 +19,7 @@ class CreatePermisos extends Migration
             $table->foreign('rol_id')->references('id')->on('roles');
             $table->bigInteger('pantalla_id')->unsigned();
             $table->foreign('pantalla_id')->references('id')->on('pantallas');
+            $TABLE->boolean('acceder')->default(false);
             $table->boolean('crear')->default(false);
             $table->boolean('actualizar')->dafult(false);
             $table->boolean('eliminar')->default(false);

@@ -27,26 +27,9 @@ class PantallasRequest extends FormRequest
             'nombre' => 'required|min:3|max:50|unique:pantallas,nombre,'.$this->pantalla,
             'permite_crear' => 'required|integer',
             'permite_actualizar' => 'required|integer',
-            'permite_eliminar' => 'required|integer'
+            'permite_eliminar' => 'required|integer',
+            'tabla' => 'required|min:3|max:50'
         ];
-
-
-        /*
-        if($this->method == 'POST')
-        {
-            $rules += [
-                'nombre' => 'required|min:3|max:50|unique:pantallas,nombre,'.$this->id,
-            ];
-        }
-
-        if($this->method == 'PUT')
-        {
-            $rules += [
-                'nombre' => 'required|min:3|max:50'
-            ];
-        }
-        */
-        //return $rules;
     }
 
     public function messages()
@@ -66,6 +49,9 @@ class PantallasRequest extends FormRequest
             'permite_eliminar.required' => 'El campo <b>Permite Eliminar</b> es obligatorio.',
             'permite_eliminar.integer' => 'El valor del campo <b>Permite Eliminar</b> no está permitido.',
 
+            'nombre.required' => 'Debes ingresar el nombre de la tabla asociada a la pantalla. En caso de no tener tabla asociada ingresa el nombre de la pantalla.',
+            'nombre.min' => 'El nombre de la tabla debe tener almenos 3 carácteres. Ingresa un nombre más largo',
+            'nombre.max' => 'El nombre de la tabla debe tener hasta 50 carácteres. Ingresa un nombre más corto',
         ];
     }
 }

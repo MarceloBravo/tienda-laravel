@@ -12,7 +12,7 @@ class Pantalla extends Model
     protected $table = "Pantallas";
 
     protected $fillable = [
-        'nombre', 'permite_crear', 'permite_actualizar', 'permite_eliminar'
+        'nombre', 'permite_crear', 'permite_actualizar', 'permite_eliminar', 'tabla'
     ];
 
     //Relación uno a muchos (Una pantalla a muchos permnisos)
@@ -26,5 +26,9 @@ class Pantalla extends Model
         return $this->hasMany('App\Menu');
     }
     
+    public function setTablaAttribute($value)
+    {
+        $this->attributes['tabla'] = strtolower($value);
+    }
     
 }

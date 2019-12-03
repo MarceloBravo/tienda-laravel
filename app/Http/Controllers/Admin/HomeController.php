@@ -9,6 +9,16 @@ use App\Menu;
 
 class HomeController extends Controller
 {
+
+    public function __construct()
+    {
+        
+        $this->middleware('permisos:home,acceder')->only('index');
+        $this->middleware('permisos:home,crear')->only('create','store');
+        $this->middleware('permisos:home,actualizar')->only('edit','update');
+        $this->middleware('permisos:home,eliminar')->only('destroy');
+    }
+
     public function index()
     {   
         \Session::put('menu', $this->menu());        

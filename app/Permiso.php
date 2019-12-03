@@ -12,7 +12,7 @@ class Permiso extends Model
     protected $table = 'Permisos';
 
     protected $fillable = [
-        'rol_id', 'pantalla_id', 'crear', 'actualizar', 'eliminar'
+        'rol_id', 'pantalla_id', 'acceder', 'crear', 'actualizar', 'eliminar'
     ];
 
     public function roles()

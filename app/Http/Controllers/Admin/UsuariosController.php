@@ -15,6 +15,17 @@ use Redirect;
 
 class UsuariosController extends Controller
 {
+
+    public function __construct()
+    {
+        $model = new User(); 
+        $tabla = $model->getTable();
+        $this->middleware('permisos:'.$tabla.',acceder')->only('index');
+        $this->middleware('permisos:'.$tabla.',crear')->only('create','store');
+        $this->middleware('permisos:'.$tabla.',actualizar')->only('edit','update');
+        $this->middleware('permisos:'.$tabla.',eliminar')->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      *
