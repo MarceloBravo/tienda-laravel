@@ -95,9 +95,11 @@ Route::get('admin/get-comunas/{idRegion}','Admin\ComunasController@getComunas');
 
 Route::resource('admin/ciudades','Admin\CiudadesController');
 Route::post('admin/ciudades-filtro','Admin\CiudadesController@filtrar');
+Route::get('admin/get-ciudades/{idComuna}','Admin\CiudadesController@getComunas');
+
+Route::resource('admin/ciudades','Admin\CiudadesController');
+Route::post('admin/ciudades-filtro','Admin\CiudadesController@filtrar');
 Route::get('admin/get-ciudades/{idComuna}','Admin\CiudadesController@getCiudades');
-
-
 
 Route::resource('admin/pantallas', 'Admin\PantallasController');
 Route::post('admin/pantallas-filtro','Admin\PantallasController@filtrar');

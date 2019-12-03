@@ -11,7 +11,7 @@ class Ciudad extends Model
 
     protected $table = 'ciudades';
 
-    protected $fillable = ['nombre', 'id_comunas'];
+    protected $fillable = ['nombre', 'id_comuna'];
 
     public function usuarios()
     {
@@ -20,6 +20,6 @@ class Ciudad extends Model
 
     public function comuna()
     {
-        return $this->hasOne('\App\comunas');
+        return $this->hasOne('\App\comuna','id','id_comuna');
     }
 }
