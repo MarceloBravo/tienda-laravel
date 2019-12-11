@@ -113,3 +113,5 @@ Route::post('admin/menus-filtro','Admin\MenusController@filtrar');
 Route::resource('admin/permisos','Admin\PermisosController');
 Route::post('admin/permisos-filtro','Admin\PermisosController@filtrar');
 
+Route::resource('admin/pedidos', 'Admin\PedidosController');
+Route::post('admin/pedidos-filtro', 'Admin\PedidosController@filtrar');

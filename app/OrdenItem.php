@@ -20,4 +20,9 @@ class OrdenItem extends Pivot
     {
         return $this->hasMany('App\OrdenItem');
     }
+
+    public function producto()
+    {
+        return $this->belongsTo('App\Producto');
+    }
 }

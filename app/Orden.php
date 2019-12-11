@@ -12,17 +12,17 @@ class Orden extends Model
     protected $table = 'ordenes';
     //
     protected $fillable=[
-        'subtotal', 'shiping', 'user_id'
+        'subtotal', 'shiping', 'user_id', 'estado_id'
     ];
 
     //Relación muchos a uno (uno a muchos inverso a usuarios)
     public function usuarios(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User','user_id','id'); //La relación se implementa en usuarios
     }
 
     public function itemsOrden()
     {
-        return $this->belongsTo('App\Orden');
+        return $this->belongsTo('App\OrdenItem','id','orden_id');
     }
 
     public function OrdenWebPay()
@@ -30,4 +30,8 @@ class Orden extends Model
         return $this->belongsTo('App\OrdenWebPay');
     }
 
+    public function estado()
+    {
+        return $this->belongsTo('App\Estado','estado_id','id');
+    }
 }

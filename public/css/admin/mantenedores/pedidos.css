@@ -1,0 +1,46 @@
+.titulo-detalle{
+    width: 100%;
+    text-align: center;
+}
+
+.col-cliente{
+    text-align: left;
+}
+
+.col-fecha, .col-estado{
+    width: 10%;
+    text-align: left;
+}
+
+.col-monto{
+    width: 10%;
+    text-align: right;
+}
+
+.table{
+    margin: 0 5%;
+    width: 90% !important;
+}
+
+.img-grid{
+    width: 50px;
+}
+
+.col-img{
+    width: 20%;
+    text-align: center;
+}
+
+.col-cliente{
+    text-align: left;
+}
+
+.col-precio{
+    width: 20%;
+    text-align: right;
+}
+
+.col-cantidad{
+    width: 10%;
+    text-align: center;
+}

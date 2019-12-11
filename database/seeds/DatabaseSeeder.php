@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         //$this->call(OfertasSeeder::class);
         //$this->call(PantallasSeeder::class);
         //$this->call(MenusSeeder::class);
+        //$this->call(EstadosSeeder::class);
     }
 }

@@ -7,6 +7,7 @@ use App\User;
 use App\Pantalla;
 use App\Permiso;
 use App\Rol;
+use Redirect;
 
 class PermisosMiddleware
 {
@@ -23,7 +24,7 @@ class PermisosMiddleware
         {
             return $next($request);
         }
-        return route('/');
+        return Redirect::to('/');
     }
 
 
@@ -56,7 +57,7 @@ class PermisosMiddleware
                             ->where('pantalla_id','=',$pantalla->id)
                             ->Where($accion,'=', true)
                             ->get();
-
-        return !is_null($permisos);
+        
+        return (is_null($permisos) || count($permisos) == 0) ? false : true;
     }
 }

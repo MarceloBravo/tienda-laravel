@@ -21,7 +21,9 @@ class CreateOrdenesItems extends Migration
             $table->foreign('orden_id')->references('id')->on('ordenes');
             $table->bigInteger('producto_id')->unsigned();
             $table->foreign('producto_id')->references('id')->on('productos');
-            $table->timestamps();
+            $table->binInteger('estado_id')->unsigned();
+            $table->foreign('estado_id')->references('id')->on('estados');
+            $table->timestamps();-
             $table->softDeletes();
         });
     }
