@@ -10,6 +10,7 @@ use Freshwork\Transbank\WebpayPatPass;
 use App\Orden;
 use App\OrdenItem;
 use App\OrdenWebPay;
+use App\Estado;
 use DB;
 
 class CheckoutController extends Controller
@@ -85,10 +86,16 @@ class CheckoutController extends Controller
 
 		try{
 			DB::beginTransaction();
+			$estado = Estado::where('estado_inicial','=', true)->first();
+			if(!isset($estado->id))
+			{
+				throw new Exception("No se encuentra configurado el estado inicial para las ventas. La transacción no puyede completarse.");
+			}
 			$orden = new Orden();
 			$orden->subtotal = $this->total();
 			$orden->shiping = $this->shipping;
 			$orden->user_id = \Auth::user()->id;
+			$orden->estado_id = $estado->id;
 			$orden->save();
 
 			foreach($carrito as $item)
@@ -104,7 +111,7 @@ class CheckoutController extends Controller
 			DB::commit();
 			$resp = $orden->id;
 		}catch(Exception $ex){
-			DB::collback();
+			DB::callback();
 			dd($ex);
 			$resp = false;
 		}

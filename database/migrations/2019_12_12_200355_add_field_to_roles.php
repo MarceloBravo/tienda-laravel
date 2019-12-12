@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEstados extends Migration
+class AddFieldToRoles extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateEstados extends Migration
      */
     public function up()
     {
-        Schema::create('estados', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nombre', 50)->unique();
-            $table->boolean('estado_inicial')->default(false);
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::table('roles', function (Blueprint $table) {
+            $table->boolean('default')->default(false);
         });
     }
 
@@ -29,6 +25,8 @@ class CreateEstados extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estados');
+        Schema::table('roles', function (Blueprint $table) {
+            //
+        });
     }
 }

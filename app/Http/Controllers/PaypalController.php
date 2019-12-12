@@ -21,7 +21,7 @@ use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
 use Redirect;
-
+use App\Estado;
 use App\Orden;
 use App\OrdenItem;
 use App\Producto;
@@ -133,8 +133,8 @@ class PaypalController extends Controller
 
     public function getPaymentStatus(Request $request)
     {
-        $paymentId = \Session::get('paypal_payment_id');
-        
+        $paymentId = \Session::get('paypal_payment_id');        
+
         \Session::forget('paypal_payment_id');
 
         $payerId = $request['PayerID'];
@@ -234,12 +234,19 @@ class PaypalController extends Controller
     {
         $this->total();   
         $this->shipping; 
+                
+        $estado = Estado::where('estado_inicial','=', true)->first();
+        if(!isset($estado->id))
+        {
+            throw new Exception("No se encuentra configurado el estado inicial para las ventas. La transacción no puyede completarse.");
+        }
         
         $orden = new Orden();        
         $orden->user_id = \Auth::user()->id;
         $dolar = $this->consultarDolar();
         $orden->shiping = $this->gastosDeEnvio($dolar);
         $orden->subTotal = $this->total();
+        $orden->estado_id = $estado->id;
         
         try{
             \DB::beginTransaction();            

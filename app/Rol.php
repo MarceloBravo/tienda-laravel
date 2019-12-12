@@ -12,7 +12,7 @@ class Rol extends Model
     protected $table = 'roles';
     //
     protected $fillable = [
-        'nombre', 'descripcion'
+        'nombre', 'descripcion', 'default'
     ];
 
     //Relación uno a muchos

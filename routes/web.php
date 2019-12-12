@@ -60,6 +60,9 @@ Route::get('fin-compra', 'FinVentaController@finalizarVenta');
 Route::get('pago-ok', 'FinVentaController@compraOk');
 Route::get('pago-error', 'FinVentaController@compraError');
 
+Route::get('registro', 'RegistroController@create');
+Route::post('registro/create', 'RegistroController@store');
+
 
 /* ****** ADMIN ******* */
 Route::get('admin/home', 'Admin\HomeController@index');

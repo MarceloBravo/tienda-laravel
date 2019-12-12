@@ -14,5 +14,6 @@
         @csrf
     </form>
 @else
-    <li><a href="/login"><i class="fa fa-user-o"></i> Iniciar sesión</a></li>
+    <li><a href="/registro"><i class="fa fa-user-o"></i> Registrase </a></li>
+    <li><a href="/login"><i class="fa fa-user-o"></i> Iniciar sesión </a></li>
 @endif

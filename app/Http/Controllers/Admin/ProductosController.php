@@ -90,6 +90,8 @@ class ProductosController extends Controller
                     }
                 }
             }            
+
+            //Subiendo las imágenes al servidor
             $arrFile = $request->files->all();
             if(array_key_exists('imagen',$arrFile))
             {

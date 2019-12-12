@@ -33,7 +33,7 @@ class UsuariosRequest extends FormRequest
             'nickname' => 'required|min:3|max:20|unique:users,nickname,'.$this->usuario,            
             'direccion' => 'required|min:5|max:255',
             'rol_id' => 'required|exists:roles,id',
-            'id_ciudad' => 'required|exists:ciudades,id',            
+            'id_ciudad' => 'required|exists:ciudades,id'
         ];
 
         if($this->method() == 'POST')

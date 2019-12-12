@@ -59,7 +59,7 @@
     <div class="form-group">
         {!! Form::label('nuevo', 'Nuevo', array('class'=>'col-md-3 control-label')) !!}
         <div class="col-md-6">
-            {!! Form::checkbox('nuevo',1, null) !!}
+            {!! Form::checkbox('nuevo',1, null) !!} <!-- El N° 1 indica que el checkbox ha de trabajjar con valores 1 y 0 no con True o False-->
         </div>
     </div>
 

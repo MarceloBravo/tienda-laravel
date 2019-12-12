@@ -39,7 +39,7 @@ class RolesRequest extends FormRequest
 
             'descripcion.required' => 'La descripción del rol es obligatoria.',
             'descripcion.min' => 'La descripción del rol debe tener un mínimo de 10 carácteres. Ingresa un nombre más largo.',
-            'descripcion.max' => 'La descripción del rol no debe superar los 255 carácteres. Ingresa un nombre más corto.',
+            'descripcion.max' => 'La descripción del rol no debe superar los 255 carácteres. Ingresa un nombre más corto.'
         ];
     }
 }
