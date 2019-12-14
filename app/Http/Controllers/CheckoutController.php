@@ -29,7 +29,7 @@ class CheckoutController extends Controller
 		$codigoCompra = 'order-' . rand(1000, 9999);
 		$webpayNormal->addTransactionDetail(1000, $codigoCompra);  
 		$response = $webpayNormal->initTransaction(route('checkout.webpay.response'), route('checkout.webpay.finish')); 		
-		// Probablemente también quieras crear una orden o transacción en tu base de datos y guardar el token ahí.
+		//crear una orden o transacción en base de datos y guardar el token.
 		session(['orden_id' => $this->grabarPedido($response)]);
 		if(!session('orden_id'))
 		{
@@ -71,6 +71,7 @@ class CheckoutController extends Controller
 			//dd($_POST, session('response'));
 			if($this->verificarTransaccion($_POST['TBK_TOKEN']))
 			{
+				\Session::forget('carrito');	//Vaciando el carrito de compras
 				return Redirect::to('/pago-ok')->with('message', 'La transacción ha sido exitosa');
 			}else{
 				return Redirect::to('/pago-error')->with('message','La compra no pudo llevarse a cabo. Ocurrió un error al intentar efectuar la transacción.');

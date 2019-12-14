@@ -265,6 +265,8 @@ class PaypalController extends Controller
             }
             
             \DB::commit();
+
+            \Session::forget('carrito');	//Vaciando el carrito de compras
             return true;
 
         }catch(Exception $ex){

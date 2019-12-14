@@ -55,7 +55,7 @@ class ShoppingController extends Controller
                                     ->get();
                                     //->toSql();
         //dd($masVendidos2);
-            
+        
         DB::statement(DB::raw('set @row := 0'));
         $subQry = OrdenItem::join('productos','ordenes_items.producto_id','=','productos.id')
                                 ->join('imagenes_productos','imagenes_productos.producto_id','=','productos.id')
@@ -72,7 +72,9 @@ class ShoppingController extends Controller
                                     ->select(DB::raw('@row := @row + 1 as fila'), 'qry.*')
                                     ->orderBy('fila')
                                     ->get();
-        
+                                    //->toSql();
+        //dd($masVendidos3);
+
         DB::statement(DB::raw('set @row := 0'));
         $subQry = OrdenItem::join('productos','ordenes_items.producto_id','=','productos.id')
                                 ->join('imagenes_productos','imagenes_productos.producto_id','=','productos.id')
@@ -89,7 +91,9 @@ class ShoppingController extends Controller
                                     ->select(DB::raw('@row := @row + 1 as fila'), 'qry.*')
                                     ->orderBy('fila')
                                     ->get();
-        
+                                    //->toSql();
+        //dd($masVendidos4);
+
         $ofertas = Oferta::where('portada','=',true)->get();
         
         return view('welcome', compact('destacados','nuevos','masVendidos','masVendidos2','masVendidos3','masVendidos4','ofertas'));

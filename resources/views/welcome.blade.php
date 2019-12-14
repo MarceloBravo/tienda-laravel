@@ -262,14 +262,15 @@
 		<!-- /SECTION -->
 		@endif
 		
-		@if(count($masVendidos2) > 0)
+		
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
 				<div class="row">
-					<div class="col-md-4 col-xs-6">
+					@if(count($masVendidos2) > 0)
+					<div class="col-md-4 col-xs-4">
 						<div class="section-title">
 							<h4 class="title">Más vendidos</h4>
 							<div class="section-nav">
@@ -305,22 +306,10 @@
 						
 						</div>
 					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /SECTION -->
-		@endif
+					@endif
 
-		@if(count($masVendidos3) > 0)
-		<!-- SECTION -->
-		<div class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<div class="col-md-4 col-xs-6">
+					@if(count($masVendidos2) > 0)
+					<div class="col-md-4 col-xs-4">
 						<div class="section-title">
 							<h4 class="title">Más vendidos</h4>
 							<div class="section-nav">
@@ -347,29 +336,17 @@
 									</div>
 								</div>
 								<!-- /product widget -->
-							@if($item->fila == 3 || $item->fila == 6)
-							</div>
+								@if($item->fila == 3 || $item->fila == 6)
+								</div>
 							@endif
 						@endforeach
 						
 						</div>
 					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /SECTION -->
-		@endif
+					@endif
 
-		@if(count($masVendidos4) > 0)
-		<!-- SECTION -->
-		<div class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<div class="col-md-4 col-xs-6">
+					@if(count($masVendidos4) > 0)
+					<div class="col-md-4 col-xs-4">
 						<div class="section-title">
 							<h4 class="title">Más vendidos</h4>
 							<div class="section-nav">
@@ -396,19 +373,22 @@
 									</div>
 								</div>
 								<!-- /product widget -->
-							@if($item->fila == 3 || $item->fila == 6)
+								@if($item->fila == 3 || $item->fila == 6)
+								</div>
+								@endif
+							@endforeach
+							
 							</div>
-							@endif
-						@endforeach
-						
 						</div>
-					</div>
+
+					@endif
+
+
 				</div>
 				<!-- /row -->
 			</div>
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-		@endif
 		
 @endsection
